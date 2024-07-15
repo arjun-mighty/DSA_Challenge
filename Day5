@@ -1,0 +1,43 @@
+//1. Two Sum
+//https://leetcode.com/problems/two-sum/description/
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        //int count = 0;
+        for(int i = 0;i<nums.length;i++)
+        {
+            for(int j = i+1;j<nums.length;j++)
+            {
+                if(nums[i] + nums[j] == target)
+                {
+                    //count++;
+                     return new int[] {i,j};
+                }
+                
+            }
+            
+        }
+       return new int[] {};
+    }
+}
+
+
+//2.    75. Sort Colors
+https://leetcode.com/problems/sort-colors/description/
+class Solution {
+    public void sortColors(int[] nums) {
+        int temp=0;
+        for(int i = 0;i<nums.length;i++){
+            for(int j = i+1;j<nums.length;j++){
+                if(nums[i] > nums[j])
+                {
+                    temp  = nums[i];
+                    nums[i] =nums[j];
+                    nums[j] = temp;
+                    System.out.println(nums[i]);
+                }
+                
+            }
+        }
+        
+    }
+}
