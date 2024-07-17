@@ -1,0 +1,23 @@
+//Rearrange Array Elements by Sign
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int n = nums.length;
+        int []neg_arr = new int [n];
+        int negativeIndex = 1;
+        int positiveIndex = 0;
+
+        for(int i = 0;i<n;i++)
+        {
+            if (nums[i] < 0) {
+            neg_arr[negativeIndex] = nums[i];
+            negativeIndex+=2;
+            }
+            else{
+                neg_arr[positiveIndex] = nums[i];
+                positiveIndex+=2;
+            }
+
+        }
+       return neg_arr;
+    }
+}
