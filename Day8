@@ -1,0 +1,18 @@
+//Probelm link : https://www.geeksforgeeks.org/problems/linked-list-insertion-1587115620/0
+//Linked List Insertion At End
+
+
+class Solution {
+    // Function to insert a node at the end of the linked list.
+    Node insertAtEnd(Node head, int x) {
+        // code here
+        Node newnode = new Node(x);
+        
+        if(head == null)return newnode;
+        Node current = head;
+        while(current.next!=null) current = current.next;
+        current.next = newnode;
+        return head;
+        
+    }
+}
