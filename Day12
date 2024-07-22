@@ -1,0 +1,42 @@
+// Day 12
+1 Question solved --> 268. Missing Number
+
+Problem Link :https://leetcode.com/problems/missing-number/description/
+class Solution {
+    public int missingNumber(int[] nums) {
+        int sum = 0;
+
+        for(int i =0;i<nums.length;i++)
+        {
+            sum = sum+nums[i];
+        }
+       int  asum = (nums.length*(nums.length+1))/2;
+       int miss = asum - sum;
+       return miss;
+
+    }
+    
+}
+
+
+2 Question solved -->125.Valid Palindrome
+
+Problem Link :https://leetcode.com/problems/valid-palindrome/description/
+class Solution {
+    public boolean isPalindrome(String s) {
+
+        s = s.toLowerCase().replaceAll("[^A-Za-z0-9]","");
+        
+        int f = 0;
+        int b = s.length()-1;
+        while(f<=b){
+            if(s.charAt(f)!=s.charAt(b))
+            {
+                return false;
+            }
+            f++;
+            b--;
+        }
+        return true;
+    }
+}
