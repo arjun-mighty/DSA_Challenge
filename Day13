@@ -1,0 +1,56 @@
+//https://leetcode.com/problems/merge-sorted-array/description/
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+
+        //here ill be using 3 poinetrs approach
+
+        int i = m-1;
+        int j = n-1;
+        int k = m+n-1;
+
+        while(j>=0){
+            if(i>=0 && nums1[i] > nums2[j]){
+                nums1[k] = nums1[i];
+                k--;
+                i--;
+            }
+            else{
+                nums1[k] = nums2[j];
+                k--;
+                j--;
+            }
+
+        }
+
+    }
+}
+
+
+https://leetcode.com/problems/intersection-of-two-arrays/description/
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0 ;i <nums2.length;i++){
+            set.add(nums2[i]);   
+        }
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i = 0 ;i <nums1.length;i++){
+            if(set.contains(nums1[i])){
+                 ans.add(nums1[i]);
+            set.remove(nums1[i]);
+            }
+           
+        }
+
+        int []res = new int[ans.size()];
+
+        for(int i = 0;i<ans.size();i++){
+            res[i]= ans.get(i);
+        }
+        return res;
+
+    }
+
+}
