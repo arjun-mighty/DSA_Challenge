@@ -1,0 +1,49 @@
+//14. Longest Common Prefix
+//https://leetcode.com/problems/longest-common-prefix/description/
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        Arrays.sort(strs);
+        String str1 = strs[0];
+        String str2 = strs[strs.length - 1];
+
+        int index = 0;
+        while(index<str1.length()){
+    
+             if(str1.charAt(index) == str2.charAt(index)){
+                index++;
+
+             }
+             else{
+                break;
+             }
+
+        }
+
+    return index == 0? "":str1.substring(0,index);
+       
+
+
+
+    }
+}
+
+
+//1903. Largest Odd Number in String
+//https://leetcode.com/problems/largest-odd-number-in-string/description/
+class Solution {
+    public String largestOddNumber(String num) {
+        int n = num.length();
+        //int i;
+        for(int i = n-1;i>=0;i--){
+            if(num.charAt(i)%2==1)
+            {
+                return num.substring(0,i+1);
+            }
+        }
+        return "";
+
+        
+    }
+
+}
