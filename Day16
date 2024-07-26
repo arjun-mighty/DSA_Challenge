@@ -1,0 +1,28 @@
+//https://leetcode.com/problems/delete-node-in-a-linked-list/description/
+//237. Delete Node in a Linked List
+class Solution {
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+        
+    }
+}
+
+
+//https://leetcode.com/problems/rotate-string/description/
+//796. Rotate String
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        for(int i = 0;i<s.length();i++){
+            if(s.charAt(i)==goal.charAt(0))
+            {
+                if((s.substring(i)+s.substring(0,i)).equals(goal))
+                {
+                    return true;
+                
+                }
+            }
+        }
+        return false;
+    }
+}
