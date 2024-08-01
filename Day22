@@ -1,0 +1,267 @@
+//LinkiedList.java
+
+package linkedlists;
+
+public class LinkedList {
+    private Node head;
+    private Node tail;
+    private int length;
+
+    public void append(int value) {
+        Node newNode = new Node(value);
+        if(length == 0){
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        length++;
+    }
+
+    public class Node {
+        int value;
+        Node next;
+
+        Node(int value) {
+            this.value = value;
+        }
+    }
+
+    public LinkedList(int value) {
+        Node newNode = new Node(value);
+        head = newNode;
+        tail = newNode;
+        length = 1;
+    }
+
+    public void printList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.println(temp.value);
+            temp = temp.next;
+        }
+    }
+
+    public void getHead() {
+        if (head == null) {
+            System.out.println("Head: null");
+        } else {
+            System.out.println("Head: " + head.value);
+        }
+    }
+
+    public void getTail() {
+        if (tail == null) {
+            System.out.println("Tail: null");
+        } else {
+            System.out.println("Tail: " + tail.value);
+        }
+    }
+
+    public void getLength() {
+        System.out.println("Length: " + length);
+    }
+
+    //Deleting a node from Last.
+    public Node removeLAst(){
+        if(length==0) return  null;
+        Node temp = head;
+        Node pre = head;
+        while(temp.next!= null)
+        {
+            pre = temp;
+            temp = temp.next;
+        }
+        tail = pre;
+        tail.next = null;
+        length --;
+        if(length == 0){
+            head = null;
+            tail = null;
+        }
+        return temp;
+    }
+
+        public void prepend(int value){
+        Node newNode = new Node(value);
+        if(length==0) {
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            newNode.next = head;
+            head = newNode;
+        }
+        length++;
+    }
+
+        public Node removeFirst()
+        {
+            if(length==0) return null;
+            Node temp = head;
+            head=head.next;
+            temp.next=null;
+            length--;
+            if(length==0){
+                tail=null;
+            }
+            return temp;
+        }
+
+        public Node get(int index){
+            if(length<0 || index>=length) return null;
+            Node temp = head;
+            for(int i =0;i<index;i++){
+                temp=temp.next;
+            }
+            return temp;
+        }
+
+        public boolean set(int index,int value){
+        Node temp = get(index);
+        if(temp!=null){
+          temp.value = value;
+          return true;
+        }
+        return false;
+    }
+    public boolean insert(int index, int value){
+        if(index<0 || index >length) return false;
+        if(index==0){
+            prepend(value);
+            return true;
+        }
+        if(index==length){
+            append(value);
+            return true;
+        }
+        Node newNode = new Node(value);
+        Node temp = get(index-1);
+        newNode.next= temp.next;
+        temp.next = newNode;
+        length++;
+        return true;
+    }
+    public Node remove(int index){
+        if(index<0 || index>=length) return null;
+        if(index==0) return removeFirst();
+        if(index==length-1)return removeLAst();
+
+        Node prev = get(index-1);
+        Node temp = prev.next;
+
+        prev.next=temp.next;
+        temp.next = null;
+        length--;
+        return temp;
+    }
+
+    public void reverse(){
+        Node temp = head;
+        head = tail;
+        tail = temp;
+
+        Node after = temp.next;
+        Node before = null;
+        for(int i = 0;i<length;i++){
+            after = temp.next;
+            temp.next = before;
+            before=temp;
+            temp=after;
+        }
+    }
+}
+
+
+
+//Main.java
+package linkedlists;
+
+import java.sql.SQLOutput;
+
+public class Main {
+    public static void main(String[] args) {
+
+        LinkedList myLinkedList = new LinkedList(0);
+        //adding element at Last
+        myLinkedList.append(11);
+        myLinkedList.append(33);
+        myLinkedList.append(44);
+//
+//        myLinkedList.getHead();
+//        myLinkedList.getTail();
+//        myLinkedList.getLength();
+//
+
+//        myLinkedList.append(3);
+//        myLinkedList.append(6);
+//        myLinkedList.append(4);
+//        System.out.println("\nLinked List:");
+
+//        adding at front
+//        myLinkedList.prepend(1);
+//        myLinkedList.prepend(9);
+//        myLinkedList.printList();
+
+        //Deleting element at from last
+
+//        myLinkedList.append(5);
+//        myLinkedList.append(6);
+
+        //myLinkedList.printList();
+        /* from here removing last element in ll
+        //2 items return 2node
+        System.out.println(myLinkedList.removeLAst().value);
+        //1 item returns 1 node
+        System.out.println(myLinkedList.removeLAst().value);
+        //0 items returns null
+        System.out.println(myLinkedList.removeLAst());
+        */
+
+
+
+
+       // from here removing first element in ll
+        //2 items return 2node
+
+
+//        System.out.println(myLinkedList.removeFirst().value);
+//
+//
+//        System.out.println(myLinkedList.removeFirst().value);
+//
+//        System.out.println(myLinkedList.removeFirst());
+
+        //Getting or returning an element based on index;
+//        System.out.print("The value at index 2 is :");
+//        System.out.print(myLinkedList.get(2).value+"\n");
+
+        //Setting elements value based on index
+//        myLinkedList.set(1,22);
+//        myLinkedList.set(3,15);
+        //inserting at anywhere
+        myLinkedList.insert(2,90);
+        myLinkedList.insert(0,20);
+        myLinkedList.insert(5,60);
+        myLinkedList.insert(6,50);
+        myLinkedList.insert(8,80);
+
+            //remove at any place
+//        myLinkedList.remove(8);
+
+        myLinkedList.printList();
+        //Reverse entire linkedlist
+        myLinkedList.reverse();
+
+        myLinkedList.printList();
+
+
+
+
+
+        
+    }
+
+}
