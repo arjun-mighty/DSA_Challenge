@@ -1,1 +1,22 @@
+// Remove duplicates from a sorted doubly linked list
+/*https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/
+1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=remove-duplicates-from-a-sorted-doubly-linked-list */
 
+class Solution{
+    Node removeDuplicates(Node head){
+        // Code Here.
+        Node temp = head;
+        Node back = null;
+        while(temp.next!= null){
+            if(temp.data ==temp.next.data){
+                temp.next = temp.next.next;
+            }
+            else{
+                back = temp;
+                temp = temp.next;
+                temp.prev = back;
+            }
+        }
+        return head;
+    }
+}
