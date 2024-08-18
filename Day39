@@ -1,0 +1,21 @@
+//#Day39 of My #100DaysOfCodingChallenge: Exploring Bitmanipulation!
+
+
+
+//Problem Solved : Find XOR of numbers from L to R
+
+//Problem Link : https://www.geeksforgeeks.org/problems/find-xor-of-numbers-from-l-to-r/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=find-xor-of-numbers-from-l-to-r
+
+
+class Solution {
+    public static int findXOR(int l, int r) {
+        return findXORHelper(l-1)^findXORHelper(r);
+    }
+    
+    public static int findXORHelper(int n){
+        if(n%4==0) return n;
+        if(n%4==1) return 1;
+        if(n%4==2) return n+1;
+        return 0;
+    }
+}
