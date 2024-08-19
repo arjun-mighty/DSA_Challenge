@@ -1,0 +1,31 @@
+// #Day40 of My  #100DaysOfCoding Challenge: 
+
+
+//Problem solved : Implement Stack using Linked List
+
+  void push(int a) 
+    {
+        StackNode node = new StackNode(a);
+        
+        if(top == null){ 
+            top = node ;
+        }else{
+            node.next = top ;
+            top = node ;
+        }
+    }
+    
+    //Function to remove an item from top of the stack.
+    int pop() 
+    {
+      if(top == null){ 
+          return -1 ;
+      }else{
+          int temp = top.data ;
+          
+          top = top.next ;
+          
+          return temp ;
+      }
+    }
+}
