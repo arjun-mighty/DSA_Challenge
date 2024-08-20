@@ -1,0 +1,36 @@
+//#Day41 of #100DaysOfCoding Challenge: 
+//Problem solved : Implement Queue using Linked List
+
+//Problem : https://www.geeksforgeeks.org/problems/implement-queue-using-linked-list/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implement-queue-using-linked-list
+
+class MyQueue
+{
+    QueueNode front, rear;
+    
+    //Function to push an element into the queue.
+	void push(int a)
+	{
+	    QueueNode node = new QueueNode(a);
+	    
+	    if(front == null){
+	        front = node ;
+	        rear = node ;
+	    }else{
+	        rear.next = node ;
+	        rear = node ;
+	    }
+        
+	}
+	
+    //Function to pop front element from the queue.
+	int pop()
+	{
+        if(front == null){ 
+            return -1 ;
+        }else{
+            int temp = front.data;
+            front = front.next ;
+            return temp ;
+        }
+	}
+}
