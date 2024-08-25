@@ -1,0 +1,32 @@
+//Problem solved : 42. Trapping Rain Water
+
+//Problem : https://leetcode.com/problems/trapping-rain-water/description/
+
+class Solution {
+    public int trap(int[] height) {
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+        
+        int left = 0;
+        int right = height.length - 1;
+        int leftMax = height[left];
+        int rightMax = height[right];
+        int waterTrapped = 0;
+
+        while (left < right) {
+            if (height[left] < height[right]) {
+                left++;
+                leftMax = Math.max(leftMax, height[left]);
+                waterTrapped += Math.max(0, leftMax - height[left]);
+                
+            } else {
+                right--;
+                rightMax = Math.max(rightMax, height[right]);
+                waterTrapped += Math.max(0, rightMax - height[right]);
+            }
+        }
+
+        return waterTrapped;
+    }
+}
