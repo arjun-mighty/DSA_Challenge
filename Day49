@@ -1,1 +1,35 @@
+/*#Day49 of #100DaysOfCoding Challenge: 
 
+🚀 Solved 1 problem on Sliding window protocol in leetcode. 🚀
+
+
+
+Problem solved : 1004. Max Consecutive Ones III
+
+Problem : https://leetcode.com/problems/max-consecutive-ones-iii/description/
+*/
+
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+        
+    int zeroCount = 0;
+    int start = 0;
+    int max_ones = 0;
+
+    for (int end = 0; end < nums.length; end++) {
+      if (nums[end] == 0)
+        zeroCount++;
+
+      while (zeroCount > k) {
+        if (nums[start] == 0)
+          zeroCount--;
+
+        start++;
+      }
+
+      max_ones = Math.max(max_ones, end - start + 1);
+    }
+    return max_ones;
+  }
+
+}
