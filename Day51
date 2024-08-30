@@ -1,0 +1,37 @@
+/*#Day51 of #100DaysOfCoding Challenge: 
+
+🚀 Solved 1 problem on leetcode. 🚀
+
+
+
+Problem solved : 930. Binary Subarrays With Sum
+
+Problem : https://leetcode.com/problems/binary-subarrays-with-sum/description/
+*/
+
+class Solution {
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        return helper(nums, goal);
+    }
+
+    private int helper(int[] nums, int target) {
+        if (target < 0) {
+            return 0;
+        }
+
+        int res = 0;
+        int currSum = 0;
+        Map<Integer, Integer> prefixSum = new HashMap<>();
+        prefixSum.put(0, 1); // Initialize with sum 0
+
+        for (int num : nums) {
+            currSum += num;
+            // Check how many times (currSum - target) has occurred
+            res += prefixSum.getOrDefault(currSum - target, 0);
+            // Update the prefix sum count
+            prefixSum.put(currSum, prefixSum.getOrDefault(currSum, 0) + 1);
+        }
+
+        return res;
+    }
+}
