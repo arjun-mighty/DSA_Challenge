@@ -1,1 +1,71 @@
+// #Day53 of 
+
+//#100DaysOfCoding Challenge: 
+
+//🚀 Solved 3 problems on LeetCode & CodeForces. 🚀
+
+
+
+//Problem 1: 1920. Build Array from Permutation
+
+//Problem : https://leetcode.com/problems/build-array-from-permutation/description/
+
+class Solution {
+    public int[] buildArray(int[] nums) {
+    int [] ans = new int[nums.length];
+    
+    for(int i=0;i<nums.length;i++){
+        
+        ans[i]=nums[nums[i]];
+
+    }
+    return ans;
+
+    }
+}
+
+
+//Problem 2 : 1929. Concatenation of Array
+
+//Problem : https://leetcode.com/problems/concatenation-of-array/description/
+
+class Solution {
+    public int[] getConcatenation(int[] nums) {
+        int [] ans = new int [2*nums.length];
+
+        for(int i = 0 ;i<nums.length;i++){
+            ans[i] = nums[i] ;
+             ans[i+nums.length] =nums[i];
+
+        }
+
+        return ans;
+    }
+}
+
+//Problem 3 : A. Watermelon(Code forces)
+
+//Problem : https://codeforces.com/contest/4/problem/A
+
+import java.util.Scanner;
+
+public class Watermelon {
+    public static void main(String[] args) {
+        int w;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Weight: ");
+        w = sc.nextInt();
+
+       
+        if (w != 2 && w % 2 == 0) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+        
+        sc.close();
+    }
+}
 
