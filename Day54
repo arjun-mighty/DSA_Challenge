@@ -1,1 +1,29 @@
+//1480. Running Sum of 1d Array
+class Solution {
+    public int[] runningSum(int[] nums) {
+        
+        for(int i =1;i<nums.length;i++){
+            nums[i] = nums[i-1]+nums[i];
+        }
+         return nums;
+    }
+}
+//1672. Richest Customer Wealth
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int maxWealthAmount = 0;
+        for (int i = 0; i < accounts.length; i++) {
+            int currentWealth = 0;
+        for (int j = 0; j < accounts[i].length; j++) {
+            currentWealth += accounts[i][j];
+        if (currentWealth > maxWealthAmount) {
+            maxWealthAmount = currentWealth;
+        }
+    }
+}
+return maxWealthAmount;
+        
+    }
+}
+//1470. Shuffle the Array
 
