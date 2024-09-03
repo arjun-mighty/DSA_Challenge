@@ -1,4 +1,6 @@
 // Day 55
+
+
 //1431. Kids With the Greatest Number of Candies
 class Solution {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
@@ -24,6 +26,59 @@ class Solution {
     }
 }
 
+//1512. Number of Good Pairs
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int count = 0;
+        for(int i = 0;i<nums.length;i++)
+        {
+            for(int j =i+1;j<nums.length;j++){
+                if(nums[i]==nums[j]&& i<j){
+                 count++;
+                }
+            }
+
+        }
+            return count;
+            
+    }
+}
+
+//1470. Shuffle the Array
+
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+
+        int[] ans = new int[nums.length];
+        
+        for(int i = 0;i<n;i++){
+            ans[2*i] = nums[i];
+            ans[2*i+1] = nums[i+n];
+        }
+        return ans;
+
+    }
+}
+
+Problem 4 : A.Next Round(Code forces)
+
+Problem : https://codeforces.com/problemset/problem/158/A
+
+Problem 5 : A. Petya and Strings(Code forces)
+
+Problem : https://lnkd.in/d2MZJtTW
+
+
+
+Problem 6 : A. Helpful Maths(Code forces)
+
+Problem : https://codeforces.com/problemset/problem/339/A
+
+
+
+Problem 7 : A. Word Capitalization(Code forces)
+
+Problem : https://codeforces.com/problemset/problem/281/A
 
 
 
