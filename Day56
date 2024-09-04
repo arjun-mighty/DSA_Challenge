@@ -23,3 +23,119 @@ class Solution {
 
 }
 
+//https://leetcode.com/problems/create-target-array-in-the-given-order/description/
+//1389. Create Target Array in the Given Order
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] index) {
+        
+        int [] target = new int [index.length];
+        for(int i = 0;i<nums.length;i++)
+        {
+         if(index[i] == i) target[index[i]] = nums[i];
+
+        else {
+            for(int j = index[i]; j < i + 1; j++) {
+                int temp = target[j];
+                target[j] = nums[i];
+                nums[i] = temp;
+            }
+        }
+    }
+    
+    return target;
+}
+
+}
+//Codeforces
+import java.util.Scanner;
+ 
+public class StonesOnTheTable {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        int n = scanner.nextInt();
+       
+        String s = scanner.next();
+        
+        
+        int stonesToRemove = 0;
+        
+        
+        for (int i = 0; i < n - 1; i++) {
+            // Check if the current stone is the same as the next one
+            if (s.charAt(i) == s.charAt(i + 1)) {
+                stonesToRemove++; // 
+            }
+        }
+        
+       
+        System.out.println(stonesToRemove);
+        
+        
+        scanner.close();
+    }
+}
+//
+import java.util.Scanner;
+public class Bearnbigbro {
+ 
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+ 
+ 
+            int limak = scanner.nextInt();
+            int bob = scanner.nextInt();
+ 
+            
+            int years = 0;
+ 
+            // Simulate the weight growth each year
+            while (limak <= bob) {
+                limak *= 3; // Limak's weight triples
+                bob *= 2; // Bob's weight doubles
+                years++; // Increment the year count
+            }
+ 
+            
+            System.out.println(years);
+ 
+ 
+            scanner.close();
+        }
+    }
+//
+import java.util.HashSet;
+import java.util.Scanner;
+ 
+public class Boyngirl {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+ 
+ 
+        String username = scanner.nextLine();
+ 
+        // Use karo  HashSet to store distinct characters
+        HashSet<Character> distinctCharacters = new HashSet<>();
+ 
+        // Add each character of the username to the HashSet
+        for (int i = 0; i < username.length(); i++) {
+ 
+            char c = username.charAt(i);
+            distinctCharacters.add(c);
+        }
+ 
+        //  number of distinct characters
+        int distinctCount = distinctCharacters.size();
+ 
+ 
+        if (distinctCount % 2 == 0) {
+            System.out.println("CHAT WITH HER!");
+        } else {
+            System.out.println("IGNORE HIM!");
+        }
+ 
+        scanner.close();
+    }
+}
+
