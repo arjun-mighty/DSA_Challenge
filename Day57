@@ -1,5 +1,97 @@
-//
+//Day57#100
+// 1832. Check if the Sentence Is Pangram
+class Solution {
+    public boolean checkIfPangram(String s) {
+        
+        Set<Character> set = new HashSet<>();
+       
+        for(int i =0;i<s.length();i++)
+        {
+            set.add(s.charAt(i));
+        }
+        return set.size()==26;
+    }
+}
 
-//https://leetcode.com/problems/check-if-the-sentence-is-pangram/
+// 1773. Count Items Matching a Rule
+class Solution {
+    public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
+        int id ,res=0;
+        if(ruleKey.equals("type"))
+        {
+            id = 0;
+        }
+        else if(ruleKey.equals("color")){
+            id =1;
+        }
+        else{
+            id = 2;
+        }
+        
+        for(int i = 0;i<items.size();i++){
+            if(items.get(i).get(id).equals(ruleValue)){
+                res++;
+            }
+        }
+        return res;
+    }
+}
 
-//
+// 1732. Find the Highest Altitude
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int alt = 0,max=0;
+        for(int i=0;i<gain.length;i++){
+            alt+= gain[i];
+            //max = Math.max(max,alt);
+             if (alt > max) {
+                max = alt; // Set max to current altitude if it's greater
+            }
+        }
+        return max;
+    }
+}
+
+//Codeforces
+Problem 4 : A. Elephant(Code forces)
+
+Problem : https://codeforces.com/problemset/problem/617/A
+import java.util.Scanner;
+public class Aelephant {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int steps = (x + 4) / 5; // This is equivalent to Math.ceil(x / 5.0)
+        System.out.println(steps);
+    }
+}
+
+
+Problem 5 : A. Soldier and Bananas(Code forces)
+
+Problem : https://codeforces.com/problemset/problem/546/A
+import java.util.Scanner;
+ 
+public class Abananas {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+ 
+        
+        int k = sc.nextInt(); 
+        int n = sc.nextInt(); 
+        int w = sc.nextInt();  
+ 
+        int totalCost = k * (w * (w + 1)) / 2;
+ 
+        
+        int amountToBorrow = totalCost - n;
+ 
+        if (amountToBorrow <= 0) {
+            System.out.println(0);
+        } else {
+            System.out.println(amountToBorrow);
+        }
+    }
+}
+
+
