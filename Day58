@@ -1,0 +1,60 @@
+//A. Word
+https://codeforces.com/problemset/problem/59/A
+package Codeforces;
+
+import java.util.Scanner;
+
+public class Aword {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int u = 0;
+        int l = 0;
+
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (Character.isUpperCase(ch)) {
+                u++;
+            } else if (Character.isLowerCase(ch)) {
+                l++;
+            }
+        }
+
+
+        if (u == l) {
+            s = s.toLowerCase(); // Convert to lowercase if counts are equal
+        } else if (u > l) {
+            s = s.toUpperCase(); // Convert to uppercase if there are more uppercase letters
+        } else {
+            s = s.toLowerCase(); // Convert to lowercase if there are more lowercase letters
+        }
+
+
+        System.out.println(s);
+    }
+}
+
+//A. Wrong Subtraction
+//https://codeforces.com/problemset/problem/977/A
+package Codeforces;
+import java.util.Scanner;
+public class Awrongsub {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        for (int i = 0; i < k; i++) {
+            if (n % 10 != 0) {
+                n--; // Subtract 1 if the last digit is non-zero
+            } else {
+                n /= 10; // Divide by 10 if the last digit is zero
+            }
+        }
+
+        // Output the result
+        System.out.println(n);
+    }
+}
+
+
