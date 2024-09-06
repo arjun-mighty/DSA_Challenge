@@ -58,5 +58,80 @@ public class Awrongsub {
 //
     }
 }
+//https://leetcode.com/problems/matrix-diagonal-sum/
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int n = mat.length;
+        int totalSum = 0;
 
+        for (int i = 0; i < n; i++) {
+            
+            totalSum += mat[i][i];
+            
+            totalSum += mat[i][n - i - 1];
+        }
+
+        
+        if (n % 2 == 1) {
+            int center = n / 2;
+            totalSum -= mat[center][center];
+        }
+
+        return totalSum;
+    }
+    
+}
+//https://leetcode.com/problems/flipping-an-image/description/
+class Solution {
+    public int[][] flipAndInvertImage(int[][] image) {
+         int n = image.length; 
+
+       
+        for (int i = 0; i < n; i++) {
+            int left = 0; 
+            int right = n - 1;
+            
+            
+            while (left < right) {
+               
+                int temp = image[i][left];
+                image[i][left] = image[i][right];
+                image[i][right] = temp;
+                
+                left++; // Move towards the center from the left
+                right--; // Move towards the center from the right
+            }
+        }
+
+        //  Invert the image
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                // Invert the value: 0 becomes 1, and 1 becomes 0
+                image[i][j] = image[i][j] ^ 1; 
+            }
+        }
+        
+        return image; 
+    }
+}
+    
+//https://leetcode.com/problems/find-numbers-with-even-number-of-digits/description/
+class Solution {
+    public int findNumbers(int[] nums) {
+         int[] digitCounts = new int[nums.length];
+        int evenDigitCount = 0; 
+
+        
+        for (int i = 0; i < nums.length; i++) {
+            
+            digitCounts[i] = String.valueOf(nums[i]).length();
+
+            
+            if (digitCounts[i] % 2 == 0) {
+                evenDigitCount++;
+            }
+        }
+        return evenDigitCount;
+    }
+}
 
