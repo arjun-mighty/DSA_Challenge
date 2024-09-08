@@ -1,1 +1,118 @@
+//Day60 Exciting
+Problem 1: Beautiful Year(Codeforces)
 
+Problem : https://codeforces.com/problemset/problem/271/A
+import java.util.Scanner;
+ 
+public class BeautifulYear {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int year = scanner.nextInt();
+        scanner.close();
+ 
+        while (true) {
+            year++;
+            int a = year / 1000;           // First digit
+            int b = (year / 100) % 10;     // Second digit
+            int c = (year / 10) % 10;      // Third digit
+            int d = year % 10;            // Fourth digit
+ 
+            // Check if all digits are distinct
+            if (a != b && a != c && a != d && b != c && b != d && c != d) {
+                System.out.println(year);
+                return;
+            }
+        }
+    }
+}
+
+
+
+Problem 2 : B. Queue at the School(Codeforces)
+
+Problem :https://codeforces.com/problemset/problem/266/B
+
+import java.util.Scanner;
+ 
+public class SwapSimulation {
+ 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+ 
+        int n = scanner.nextInt(); 
+        int t = scanner.nextInt(); 
+        String s = scanner.next(); 
+ 
+       
+        char[] chars = s.toCharArray();
+ 
+       
+        while (t > 0) {
+           
+            for (int i = 1; i < n; i++) {
+                if (chars[i - 1] == 'B' && chars[i] == 'G') {
+                    // Swap 'B' and 'G'
+                    chars[i - 1] = 'G';
+                    chars[i] = 'B';
+                    
+                    i++;
+                }
+            }
+            t--;
+        }
+ 
+        // Convert the character array back to a string and print the result
+        System.out.println(new String(chars));
+ 
+        scanner.close();
+    }
+}
+
+Problem 3 : 989. Add to Array-Form of Integer(Leetcode)
+
+Problem : https://leetcode.com/problems/add-to-array-form-of-integer/description/
+class Solution {
+    public List<Integer> addToArrayForm(int[] num, int k) {
+        List<Integer>arrayform = new ArrayList<>();
+
+        int index = num.length-1;
+        while(index>=0|| k>0)
+        {
+            if(index>=0){
+                k+=num[index];
+            }
+            arrayform.add(k%10);
+            k=k/10;
+            index--;
+        }
+        Collections.reverse(arrayform);
+        return arrayform;
+    }
+}
+
+
+Problem 4 : 1854. Maximum Population Year(Leetcode)
+
+Problem :https://leetcode.com/problems/maximum-population-year/description/
+class Solution {
+    public int maximumPopulation(int[][] logs) {
+        int[] arr = new int[101];
+        for(int[] log : logs) {
+            int birth = log[0];
+            int death = log[1];
+            arr[birth-1950]++;
+            arr[death-1950]--;
+        }
+
+        int max = arr[0];
+        int year = 1950;
+        for(int i = 1 ; i < 101; i++) {
+            arr[i] += arr[i-1];
+            if(arr[i] > max) {
+                max = arr[i];
+                year = 1950 + i;
+            }
+        }
+        return year;
+    }
+}
