@@ -1,0 +1,91 @@
+
+
+//486A - Calculating Function
+import java.util.Scanner;
+ 
+public class CalculatingFunction {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        long n = scanner.nextLong();
+        
+      
+        long result;
+        if (n % 2 == 0) {
+            result = n / 2;
+        } else {
+            result = -(n + 1) / 2;
+        }
+        
+        
+        System.out.println(result);
+    }
+}
+
+//Magnets
+import java.util.Scanner;
+ 
+public class MagnetGroups {
+ 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+ 
+        int n = scanner.nextInt();
+        scanner.nextLine();  
+        
+     
+        int groupCount = 0;
+        String previousType = null;
+        
+       
+        for (int i = 0; i < n; i++) {
+            String currentType = scanner.nextLine();
+            if (!currentType.equals(previousType)) {
+                groupCount++;
+                previousType = currentType;
+            }
+        }
+        
+      
+        System.out.println(groupCount);
+    }
+}
+//Problem 3 : 566. Reshape the Matrix
+
+Problem : https://leetcode.com/problems/reshape-the-matrix/description/
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        
+       
+        int rows = mat.length;
+        int cols = mat[0].length;
+        
+        if((rows * cols) != (r * c)) return mat;
+        
+        
+        int[][] output = new int[r][c];
+        int output_rows = 0;
+        int output_cols = 0;
+        
+        
+        for(int i = 0; i < rows; i++)
+        {
+            for(int j = 0; j < cols; j++)
+            {
+                output[output_rows][output_cols] = mat[i][j];
+                output_cols++;
+                
+                
+                if(output_cols == c)
+                {
+                    output_cols = 0;
+                    output_rows++;
+                }
+            }
+        }
+        
+        return output;
+    }
+}
