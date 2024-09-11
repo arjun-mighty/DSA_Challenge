@@ -1,0 +1,98 @@
+//55. Jump Game
+//https://leetcode.com/problems/jump-game/description/
+class Solution {
+
+    public boolean canJump(int[] nums) {
+        int maxReach = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (i > maxReach) {
+                    return false;
+                }
+                maxReach = Math.max(maxReach, i + nums[i]);
+                if (maxReach >= nums.length - 1) {
+                return true;
+                }
+             }
+        return false;
+    }
+}
+
+//198. House Robber
+//https://leetcode.com/problems/house-robber/description/
+class Solution {
+    public int rob(int[] nums) {
+        int count = 0;
+        if(nums.length<2){
+            return nums[0];
+        }
+
+        int [] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+
+    
+    for (int i = 2; i < nums.length; i++) {
+
+      
+      dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+    }
+
+        return dp[nums.length - 1];
+    }
+        
+}
+
+
+//A. Presents
+//https://codeforces.com/problemset/problem/136/A
+import java.util.Scanner;
+ 
+public class Apresents {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        int[] gifts = new int[n]; 
+ 
+        
+        for (int i = 0; i < n; i++) {
+            int p = sc.nextInt(); // Friend who gave a gift to friend i+1
+            gifts[p - 1] = i + 1; // Store who received the gift
+        }
+ 
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print(gifts[i] + " "); // Output who gave a gift to friend i+1
+        }
+        sc.close();
+    }
+}
+
+//B. Drinks
+https://codeforces.com/problemset/problem/200/B
+import java.util.Scanner;
+ 
+public class Bdrinks {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+ 
+        int n = sc.nextInt();
+        double totalPercentage = 0.0; 
+        
+        
+        for (int i = 0; i < n; i++) {
+            int p = sc.nextInt(); // Volume fraction of orange juice in the i-th drink
+            totalPercentage += p; // Add to the total
+        }
+        
+        // Calculate the average percentage of orange juice in the cocktail
+        double averagePercentage = totalPercentage / n;
+        
+        
+        System.out.printf("%.12f%n", averagePercentage); // Print with 12 decimal places
+        
+        sc.close();
+    }
+}
+
+
