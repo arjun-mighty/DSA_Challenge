@@ -1,1 +1,136 @@
+//A. Hulk
+//https://codeforces.com/problemset/problem/705/A
+import java.util.Scanner;
+ 
+public class Ahulk {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        StringBuilder result = new StringBuilder();
+ 
+        for (int i = 1; i <= n; i++) {
+            if (i % 2 != 0) {
+                result.append("I hate");
+            } else {
+                result.append("I love");
+            }
+            
+           
+            if (i < n) {
+                result.append(" that ");
+            }
+        }
+ 
+       
+        result.append(" it");
+ 
+        
+        System.out.println(result.toString());
+        
+        sc.close();
+    }
+}
 
+//A. Is your horseshoe on the other hoof?
+//https://codeforces.com/problemset/problem/228/A
+import java.util.HashSet;
+import java.util.Scanner;
+ 
+public class ValeraHorseshoes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        HashSet<Integer> colors = new HashSet<>();
+        
+     
+        for (int i = 0; i < 4; i++) {
+            int color = scanner.nextInt();
+            colors.add(color);
+        }
+        
+        // Calculate the number of unique colors
+        int uniqueCount = colors.size();
+        
+        
+        int horseshoesToBuy = 4 - uniqueCount;
+        
+  
+        System.out.println(horseshoesToBuy);
+        
+        scanner.close();
+    }
+}
+//238. Product of Array Except Self
+//https://leetcode.com/problems/product-of-array-except-self/description/
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+
+        int[] left = new int[nums.length];
+
+    
+        int[] right = new int[nums.length];
+
+        left[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+        left[i] = left[i - 1] * nums[i - 1];
+    }
+
+        right[nums.length - 1] = 1;
+        for (int i = nums.length - 2; i > -1; i--) {
+        right[i] = right[i + 1] * nums[i + 1];
+            }
+
+        int[] ans = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+         ans[i] = left[i] * right[i];
+        }
+
+        return ans;
+    }
+}
+
+//34. Find First and Last Position of Element in Sorted Array
+//class Solution {
+
+public  int[] searchRange(int[] arr, int target) {
+            int[] ans = {-1, -1};
+
+            ans[0] = search(arr, target , true);
+
+            if (ans[0] != -1) {
+                ans[1] = search(arr, target , false);
+            }
+            return ans;
+        }
+
+        public int search(int[] arr, int target, boolean findStartIndex) {
+
+            int ans = -1;
+            int start = 0;
+            int end = arr.length - 1;
+
+            //mid element
+
+
+            while (start <= end) {
+                int mid = start + (end - start) / 2;
+
+                if (target < arr[mid]) {
+                    end = mid - 1;
+                } else if(target > arr[mid]) {
+                    start = mid + 1;
+                } else {
+                    // potential answer
+                    ans = mid;
+                    if (findStartIndex) {
+                        end = mid - 1;
+                    } else {
+                        start = mid + 1;
+                    }
+                }
+            }
+            return ans;
+        }
+
+}
+
+//
