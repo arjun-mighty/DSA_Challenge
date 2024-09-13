@@ -75,13 +75,81 @@ public class IWantToBeTheGuy {
             coveredLevels.add(sc.nextInt());
         }
         
-        sc.close(); 
-        
-        if (coveredLevels.size() == n) {
-            System.out.println("I become the guy.");
-        } else {
-            System.out.println("Oh, my keyboard!");
+        sc.close(); class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for(int i = 0;i<matrix.length;i++){
+            int left = 0;
+            int right = matrix[0].length-1;
+
+            while(left<=right){
+                int mid = left +(right - left)/2;
+                if(matrix[i][mid]==target){
+                    return true;
+                }
+                else if(matrix[i][mid]<target){
+                    left = mid+1;
+                }
+                else{
+                    right = mid-1;
+                }
+            }
         }
+        return false;
     }
 }
-// ok
+
+//69. Sqrt(x)
+//https://leetcode.com/problems/sqrtx/
+        
+   class Solution {
+    public int mySqrt(int x) {
+        int start = 0;
+        int end = x;
+         if (x < 2) return x;
+
+        while(start<=end){
+            int mid = start+(end-start)/2;
+            long midsquared = (long) mid*mid;
+            if(midsquared == x)
+            {
+                return mid;
+            }
+            else if(midsquared<x){
+                 start = mid+1;
+            }
+            else{
+                end = mid-1;
+            }
+            
+        }
+        return end;
+
+    }
+}
+// 74. Search a 2D Matrix
+//https://leetcode.com/problems/search-a-2d-matrix/description/
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for(int i = 0;i<matrix.length;i++){
+            int left = 0;
+            int right = matrix[0].length-1;
+
+            while(left<=right){
+                int mid = left +(right - left)/2;
+                if(matrix[i][mid]==target){
+                    return true;
+                }
+                else if(matrix[i][mid]<target){
+                    left = mid+1;
+                }
+                else{
+                    right = mid-1;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+
