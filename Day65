@@ -1,0 +1,87 @@
+ //A. Divisibility Problem
+//https://codeforces.com/problemset/problem/1328/A
+import java.util.Scanner;
+public class Adivisibilitypblm {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+ 
+        int t = sc.nextInt();
+ 
+        for (int i = 0; i < t; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int remainder = a % b; // Calculate the remainder
+            int moves = remainder == 0 ? 0 : b - remainder;
+ 
+            System.out.println(moves);
+ 
+        }
+    }
+}
+//A. Pangram
+//https://codeforces.com/problemset/problem/520/A
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+ 
+public class Apanagram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        sc.nextLine(); 
+        String s = sc.nextLine(); 
+        sc.close(); 
+ 
+        boolean result = checkIfPangram(s); 
+        System.out.println(result ? "YES" : "NO"); 
+    }
+ 
+    public static boolean checkIfPangram(String s) {
+        Set<Character> set = new HashSet<>();
+ 
+        s = s.toLowerCase(); 
+ 
+        for (char ch : s.toCharArray()) {
+            if (ch >= 'a' && ch <= 'z') {
+                set.add(ch);
+            }
+        }
+ 
+        return set.size() == 26; 
+    }
+}
+//A. I Wanna Be the Guy
+//https://codeforces.com/problemset/problem/469/A
+import java.util.Scanner;
+import java.util.HashSet;
+ 
+public class IWantToBeTheGuy {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        
+        
+        HashSet<Integer> coveredLevels = new HashSet<>();
+        
+       
+        int p = sc.nextInt();
+        for (int i = 0; i < p; i++) {
+            coveredLevels.add(sc.nextInt());
+        }
+        
+       
+        int q = sc.nextInt();
+        for (int i = 0; i < q; i++) {
+            coveredLevels.add(sc.nextInt());
+        }
+        
+        sc.close(); 
+        
+        if (coveredLevels.size() == n) {
+            System.out.println("I become the guy.");
+        } else {
+            System.out.println("Oh, my keyboard!");
+        }
+    }
+}
+//
