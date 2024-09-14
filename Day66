@@ -119,3 +119,56 @@ public class Solution extends VersionControl {
         return left;
     }
 }
+
+//A. Insomnia cure
+//https://codeforces.com/problemset/problem/148/A
+//import java.util.Scanner;
+
+public class DragonDamage {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read inputs
+        int k = scanner.nextInt();
+        int l = scanner.nextInt();
+        int m = scanner.nextInt();
+        int n = scanner.nextInt();
+        int d = scanner.nextInt();
+        
+        int damagedDragons = 0;
+
+        // Check each dragon from 1 to d
+        for (int i = 1; i <= d; i++) {
+            if (i % k == 0 || i % l == 0 || i % m == 0 || i % n == 0) {
+                damagedDragons++;
+            }
+        }
+        
+        // Output the number of damaged dragons
+        System.out.println(damagedDragons);
+    }
+}
+
+//A. Hit the Lottery
+//https://codeforces.com/problemset/problem/996/A
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
+
+        int[] denominations = {100, 20, 10, 5, 1};  // Denominations in descending order
+        int count = 0;
+
+        for (int denom : denominations) {
+            count += n / denom;  // Number of bills of this denomination
+            n %= denom;  // Remaining amount
+        }
+
+        System.out.println(count);
+    }
+}
+..
