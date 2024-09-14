@@ -53,4 +53,49 @@ public class Solution extends GuessGame {
     }  
 }
 
-//
+//540. Single Element in a Sorted Array
+//https://leetcode.com/problems/single-element-in-a-sorted-array/description/
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        int start = 0;
+        int end = nums.length -1;
+
+        while(start<end){
+            int mid = start+(end-start)/2;
+            
+            //find if mid is odd if it is make it even;
+            if(mid%2==1){
+                mid--;
+            }
+            if(nums[mid]==nums[mid+1]){
+                start = mid+2;
+            }
+            else{
+                end = mid;
+            }
+        }
+        return nums[start];
+    }
+}
+
+//162. Find Peak Element
+//https://leetcode.com/problems/find-peak-element/description/
+class Solution {
+    public int findPeakElement(int[] nums) {
+        int start = 0;
+        int end = nums.length -1;
+
+        while(start<end){
+            int mid = start+(end - start)/2;
+
+                if(nums[mid]<nums[mid+1])
+                {
+                    start = mid+1;
+                }
+                else{
+                    end = mid;
+                }
+        }
+        return start;
+    }
+}
