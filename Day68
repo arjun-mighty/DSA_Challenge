@@ -1,12 +1,140 @@
 //A. The New Year: Meeting Friends
+import java.util.Arrays;
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int x1 = scanner.nextInt();
+        int x2 = scanner.nextInt();
+        int x3 = scanner.nextInt();
+        
+        
+        int[] coordinates = {x1, x2, x3};
+        
+        
+        Arrays.sort(coordinates);
+        
+       
+        int median = coordinates[1];
+        
+      
+        int totalDistance = (coordinates[2] - median) + (median - coordinates[0]);
+        
+  
+        System.out.println(totalDistance);
+    }
+}
 
 
-//
+//A. Police Recruits
+import java.util.Scanner;
+ 
+public class PoliceRecruits {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+ 
+    
+        int n = scanner.nextInt();
+        int availableOfficers = 0; 
+        int untreatedCrimes = 0; 
+       // int untreatedof =0;
+        
+        for (int i = 0; i < n; i++) {
+            int event = scanner.nextInt();
+            if (event == -1) {
+                
+                if (availableOfficers > 0) {
+                    availableOfficers--; 
+                } else {
+                    untreatedCrimes++; 
+                }
+            } else {
+          
+                availableOfficers += event;
+            }
+        }
+ 
+      
+        System.out.println(untreatedCrimes);
+    }
+}
 
 
 
+//167. Two Sum II - Input Array Is Sorted
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int left = 0;
+        int right = numbers.length - 1;
+        
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
+            
+            if (sum == target) {
+                return new int[]{left + 1, right + 1};
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        
+        return new int[0]; // This line is technically unreachable due to problem constraints
+    }
+}
+//367. Valid Perfect Square
+https://leetcode.com/problems/valid-perfect-square/
+public class Solution {
+    public boolean isPerfectSquare(int num) {
+        if (num < 2) {
+            return true; // 0 and 1 are perfect squares
+        }
+        
+        int left = 2;
+        int right = num / 2;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            long midSquared = (long) mid * mid; 
+        
+            if (midSquared == num) {
+                return true;
+            } else if (midSquared < num) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        
+        return false;
+    }
+}
 
-//
+//Problem 5 :441. Arranging Coins
+
+//Problem :https://leetcode.com/problems/arranging-coins/description/
+class Solution {
+    public int arrangeCoins(int n) {
+        long left = 0;
+        long right = n;
+        
+        while (left <= right) {
+            long mid = left + (right - left) / 2;
+            long totalCoins = mid * (mid + 1) / 2;
+            
+            if (totalCoins == n) {
+                return (int) mid;
+            } else if (totalCoins < n) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        
+        return (int) right;
+    }
+}
 
 
 
