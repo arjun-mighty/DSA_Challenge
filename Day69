@@ -1,1 +1,160 @@
+//287. Find the Duplicate Number
+//https://leetcode.com/problems/find-the-duplicate-number/
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int slow = nums[0];
+        int fast = nums[0];
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        while (slow != fast);
+        slow = nums[0];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return fast;
+    }
+}
+//18. 4Sum
+//https://leetcode.com/problems/4sum/description/
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        Arrays.sort(nums); // Sort the array to use two-pointer technique
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i = 0;i<nums.length;i++)
+        {
+            for(int j = i+1;j<nums.length;j++)
+            {
+                for(int k =j+1;k<nums.length;k++)
+                {
+                    for(int l = k+1;k<nums.length;l++)
+                    {
+                        if(nums[i] + nums[j] + nums[k] + nums[l] == target)
+                         {
+                            //count++;
+                           // System.out.println(nums[i]","+nums[j]","+nums[k]","+nums[l]);
+                             return new int[] {i,j,k,l};
+                         }
+                
+                    }
+                     
+                }
+               
+            }
+            
+        }
+       return target;
+    }
+
+        
+    
+}
+//
+import java.util.Scanner;
+ 
+public class NewYearAndHurry {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        
+        int availableTime = 240 - k; 
+        int totalTimeSpent = 0;
+        int maxProblemsSolved = 0;
+        
+        for (int i = 1; i <= n; i++) {
+            totalTimeSpent += 5 * i; 
+            
+            if (totalTimeSpent <= availableTime) {
+                maxProblemsSolved++;
+            } else {
+                break; // No more time to solve additional problems
+            }
+        }
+        
+        System.out.println(maxProblemsSolved);
+    }
+}
+//
+import java.util.Scanner;
+ 
+public class AmazingPerformance {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int n = scanner.nextInt();
+        int[] scores = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            scores[i] = scanner.nextInt();
+        }
+        
+        int amazingCount = 0;
+        int bestScore = scores[0];
+        int worstScore = scores[0];
+        
+        for (int i = 1; i < n; i++) {
+            if (scores[i] > bestScore) {
+                amazingCount++;
+                bestScore = scores[i];
+            } else if (scores[i] < worstScore) {
+                amazingCount++;
+                worstScore = scores[i];
+            }
+        }
+        
+        System.out.println(amazingCount);
+    }
+}
+//
+import java.util.Scanner;
+ 
+public class SoftDrinking {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        int l = scanner.nextInt();
+        int c = scanner.nextInt();
+        int d = scanner.nextInt();
+        int p = scanner.nextInt();
+        int nl = scanner.nextInt();
+        int np = scanner.nextInt();
+        
+        int totalDrink = k * l;
+        int totalSlices = c * d;
+        
+        int toastsFromDrink = totalDrink / nl;
+        int toastsFromLime = totalSlices;
+        int toastsFromSalt = p / np;
+        
+        int maxToasts = Math.min(toastsFromDrink, Math.min(toastsFromLime, toastsFromSalt));
+        
+        System.out.println(maxToasts / n);
+    }
+}
+//
+import java.util.Scanner;
+ 
+public class BuyAShovel {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int k = scanner.nextInt();
+        int r = scanner.nextInt();
+        
+        for (int n = 1; n <= 10; n++) {
+            int totalCost = n * k;
+            if (totalCost % 10 == 0 || totalCost % 10 == r) {
+                System.out.println(n);
+                return;
+            }
+        }
+    }
+}
 //
