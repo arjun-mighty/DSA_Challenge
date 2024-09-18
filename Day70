@@ -1,0 +1,46 @@
+//A. Again Twenty Five!
+https://codeforces.com/problemset/problem/630/A
+import java.util.Scanner;
+
+public class LastTwoDigitsOfFivePower {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        long n = scanner.nextLong();
+        
+        // Since n is guaranteed to be >= 2, we directly output "25"
+        System.out.println("25");
+        
+        scanner.close();
+    }
+}
+
+//A. Vasya the Hipster
+//https://codeforces.com/problemset/problem/581/A
+import java.util.Scanner;
+ 
+public class VasyaTheHipster {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        
+        
+        int diffSocksDays = a < b ? a : b;
+        
+       
+        int remainingSocks = a > b ? a - b : b - a;
+        
+  
+        int sameSocksDays = remainingSocks / 2;
+        
+       
+        System.out.println(diffSocksDays + " " + sameSocksDays);
+        
+        scanner.close();
+    }
+}
+//
