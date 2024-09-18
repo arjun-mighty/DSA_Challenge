@@ -102,3 +102,50 @@ public class RestoringThreeNumbers {
         scanner.close();
     }
 }
+//Problem 4 :852. Peak Index in a Mountain Array
+
+Problem :https://leetcode.com/problems/peak-index-in-a-mountain-array/description/
+
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] > arr[mid + 1]) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return left;
+    }
+}
+//1608. Special Array With X Elements Greater Than or Equal X
+https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/description/
+class Solution {
+    public int specialArray(int[] nums) {
+          int n = nums.length;
+
+        // Evaluate possible values for x
+        for (int x = 0; x <= n; x++) {
+            int count = 0;
+            
+            for (int i = 0; i < n; i++) {
+                if (nums[i] >= x) {
+                    count++;
+                }
+            }
+            // Check if count equals x
+            if (count == x) {
+                return x;
+            }
+        }
+
+        return -1; 
+    }
+    
+}
