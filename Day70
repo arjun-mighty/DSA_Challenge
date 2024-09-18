@@ -43,4 +43,62 @@ public class VasyaTheHipster {
         scanner.close();
     }
 }
-//
+//A. Sereja and Dima
+//https://codeforces.com/problemset/problem/381/A
+import java.util.Scanner;
+ 
+public class SerejaAndDima {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = scanner.nextInt();
+        }
+        int s = 0, d = 0, i = 0, j = n - 1;
+        boolean turn = true;
+        while (i <= j) {
+            if (a[i] > a[j]) {
+                if (turn) s += a[i];
+                else d += a[i];
+                i++;
+            } else {
+                if (turn) s += a[j];
+                else d += a[j];
+                j--;
+            }
+            turn = !turn;
+        }
+        System.out.println(s + " " + d);
+        scanner.close();
+    }
+}
+
+//A. Restoring Three Numbers
+//https://codeforces.com/problemset/problem/1154/A
+import java.util.Scanner;
+ 
+public class RestoringThreeNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        int x1 = scanner.nextInt();
+        int x2 = scanner.nextInt();
+        int x3 = scanner.nextInt();
+        int x4 = scanner.nextInt();
+        
+      
+        int total = Math.max(Math.max(x1, x2), Math.max(x3, x4));
+        
+       
+        int a = total - x3; // since x3 is b+c
+        int b = total - x2; // since x2 is a+c
+        int c = total - x1; // since x1 is a+b
+        
+  
+        System.out.println(a + " " + b + " " + c);
+        
+        scanner.close();
+    }
+}
