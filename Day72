@@ -1,1 +1,127 @@
+//Holiday Of Equality
+
+import java.util.Scanner;
+ 
+public class HolidayOfEquality {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read number of citizens
+        int n = scanner.nextInt();
+        int[] welfare = new int[n];
+        
+        // Read the welfare values
+        for (int i = 0; i < n; i++) {
+            welfare[i] = scanner.nextInt();
+        }
+        
+        // Calculate the minimum charges
+        int minCharges = calculateMinCharges(welfare);
+        
+        // Output the result
+        System.out.println(minCharges);
+        
+        scanner.close();
+    }
+ 
+    private static int calculateMinCharges(int[] welfare) {
+        int maxWelfare = Integer.MIN_VALUE;
+        int totalCurrentWelfare = 0;
+ 
+        // Find maximum welfare and total current welfare
+        for (int w : welfare) {
+            if (w > maxWelfare) {
+                maxWelfare = w;
+            }
+            totalCurrentWelfare += w;
+        }
+ 
+        // Calculate minimum charges needed
+        return (maxWelfare * welfare.length) - totalCurrentWelfare;
+    }
+}
+// 
+import java.util.Scanner;
+ 
+public class CodeforcesChecking {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+      
+        int t = scanner.nextInt();
+        scanner.nextLine(); 
+        
+      
+        String codeforces = "codeforces";
+        
+      
+        for (int i = 0; i < t; i++) {
+            char c = scanner.nextLine().charAt(0);
+            
+            // Check if character is in "codeforces"
+            if (codeforces.indexOf(c) != -1) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        scanner.close();
+    }
+}
+
 //
+import java.util.Scanner;
+ 
+public class DesignTutorial {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int n = scanner.nextInt();
+        
+       
+        if (n % 2 == 0) {
+            // For even n
+            System.out.println("4  " + (n - 4));
+        } else {
+            // For odd n
+            System.out.println("9 " + (n - 9));
+        }
+        
+        scanner.close();
+    }
+}
+//18.4sum
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        Arrays.sort(nums); // Sort the array to use two-pointer technique
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i = 0;i<nums.length;i++)
+        {
+            for(int j = i+1;j<nums.length;j++)
+            {
+                for(int k =j+1;k<nums.length;k++)
+                {
+                    for(int l = k+1;k<nums.length;l++)
+                    {
+                        if(nums[i] + nums[j] + nums[k] + nums[l] == target)
+                         {
+                            //count++;
+                           // System.out.println(nums[i]","+nums[j]","+nums[k]","+nums[l]);
+                             return new int[] {i,j,k,l};
+                         }
+                
+                    }
+                     
+                }
+               
+            }
+            
+        }
+       return target;
+    }
+
+        
+    
+}
