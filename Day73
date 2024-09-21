@@ -1,0 +1,186 @@
+//Day73
+//A. Short Substrings
+//https://codeforces.com/problemset/problem/1367/A
+import java.util.Scanner;
+ 
+public class ShortSubstrings {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the number of test cases
+        int t = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        
+        // Process each test case
+        for (int i = 0; i < t; i++) {
+            String b = scanner.nextLine();
+            String a = guessSecretString(b);
+            System.out.println(a);
+        }
+        
+       
+    }
+    
+    private static String guessSecretString(String b) {
+        StringBuilder a = new StringBuilder();
+        
+        // Extract the first character of each substring of length 2
+        for (int i = 0; i < b.length() - 1; i += 2) {
+            a.append(b.charAt(i));
+        }
+        
+        // Append the last character of b
+        a.append(b.charAt(b.length() - 1));
+        
+        return a.toString();
+    }
+}
+
+
+
+//A. Medium Number
+//https://codeforces.com/problemset/problem/1760/A
+import java.util.Scanner;
+ 
+public class MediumNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int t = scanner.nextInt();
+        
+      
+        for (int i = 0; i < t; i++) {
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            int c = scanner.nextInt();
+            
+            // Find and print the medium number
+            int medium = findMedium(a, b, c);
+            System.out.println(medium);
+        }
+        
+      
+    }
+    
+   
+    private static int findMedium(int a, int b, int c) {
+        if ((a > b && a < c) || (a < b && a > c)) {
+            return a; // a is the medium
+        } else if ((b > a && b < c) || (b < a && b > c)) {
+            return b; // b is the medium
+        } else {
+            return c; // c is the medium
+        }
+    }
+}
+
+
+
+//A. Team Olympiad
+//https://codeforces.com/problemset/problem/490/A
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+ 
+public class TeamOlympiad {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read number of children
+        int n = scanner.nextInt();
+        
+        // Create lists to store indices of children based on their skills
+        List<Integer> programmers = new ArrayList<>();
+        List<Integer> mathematicians = new ArrayList<>();
+        List<Integer> sportsmen = new ArrayList<>();
+        
+        // Read skill levels and categorize children
+        for (int i = 1; i <= n; i++) {
+            int skill = scanner.nextInt();
+            if (skill == 1) {
+                programmers.add(i);
+            } else if (skill == 2) {
+                mathematicians.add(i);
+            } else if (skill == 3) {
+                sportsmen.add(i);
+            }
+        }
+        
+        // Calculate the maximum number of teams
+        int teamsCount = Math.min(programmers.size(), Math.min(mathematicians.size(), sportsmen.size()));
+        
+        // Output the result
+        System.out.println(teamsCount);
+        
+        // Print the teams
+        for (int i = 0; i < teamsCount; i++) {
+            System.out.println(programmers.get(i) + " " + mathematicians.get(i) + " " + sportsmen.get(i));
+        }
+        
+        scanner.close();
+    }
+}
+
+//A. Choosing Teams
+//https://codeforces.com/problemset/problem/432/A
+import java.util.Scanner;
+ 
+public class ChoosingTeams {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+    
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        
+        // Array to store participation counts
+        int[] participationCounts = new int[n];
+       
+        for (int i = 0; i < n; i++) {
+            participationCounts[i] = scanner.nextInt();
+        }
+        
+        // Count how many students can participate at least k more times
+        int eligibleCount = 0;
+        
+        for (int count : participationCounts) {
+            if (count + k <= 5) {
+                eligibleCount++;
+            }
+        }
+        
+        // Calculate the maximum number of teams that can be formed
+        int maxTeams = eligibleCount / 3;
+        
+        
+        System.out.println(maxTeams);
+        
+        scanner.close();
+    }
+}
+
+//35. Search Insert Position
+//https://leetcode.com/problems/search-insert-position/description/?envType=study-plan-v2&envId=top-interview-150
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        
+         int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2; 
+
+            if (nums[mid] == target) {
+                return mid; 
+            } else if (nums[mid] < target) {
+                left = mid + 1; // Search in the right half
+            } else {
+                right = mid - 1; // Search in the left half
+            }
+        }
+
+        return left; // Insert position
+
+    }
+}
