@@ -1,1 +1,157 @@
-//
+// Day74
+
+//A. To My Critics
+//https://codeforces.com/problemset/problem/1850/A
+
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int t = scanner.nextInt();
+        
+       
+        for (int i = 0; i < t; i++) {
+            
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            int c = scanner.nextInt();
+            
+            // Check if any pair sums to 10 or more
+            if (a + b >= 10 || a + c >= 10 || b + c >= 10) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+       
+        scanner.close();
+    }
+}
+
+//A. Black Square
+//https://codeforces.com/problemset/problem/431/A
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+      
+        int a1 = scanner.nextInt();
+        int a2 = scanner.nextInt();
+        int a3 = scanner.nextInt();
+        int a4 = scanner.nextInt();
+        
+     
+        String s = scanner.next();
+        
+        
+        int totalCalories = 0;
+        
+        // Calculate total calories based on the sequence using a normal for loop
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);  
+            switch (c) {
+                case '1':
+                    totalCalories += a1;
+                    break;
+                case '2':
+                    totalCalories += a2;
+                    break;
+                case '3':
+                    totalCalories += a3;
+                    break;
+                case '4':
+                    totalCalories += a4;
+                    break;
+            }
+        }
+        
+        
+        System.out.println(totalCalories);
+        
+       
+        scanner.close();
+    }
+}
+
+//A. Required Remainder
+//https://codeforces.com/problemset/problem/1374/A
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+       
+        int t = scanner.nextInt();
+        
+        
+        for (int i = 0; i < t; i++) {
+            long x = scanner.nextLong();
+            long y = scanner.nextLong();
+            long n = scanner.nextLong();
+            
+            // Calculate the maximum value of k
+            long maxK = (n - y) / x * x + y;
+          
+            System.out.println(maxK);
+        }
+        
+      
+        scanner.close();
+    }
+}
+//A. Short Sort
+//https://codeforces.com/problemset/problem/1873/A
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+     
+        int t = scanner.nextInt();
+        scanner.nextLine(); 
+        
+        for (int i = 0; i < t; i++) {
+            String cards = scanner.nextLine();
+            
+            // Check if the cards can be rearranged to "abc"
+            if (cards.equals("abc") || 
+                cards.equals("acb") || 
+                cards.equals("bac") || 
+                cards.equals("cba")) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        
+       
+    }
+}
+
+//392. Is Subsequence
+//https://leetcode.com/problems/is-subsequence/description/
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+         int sLen = s.length();
+        int tLen = t.length();
+        int sPointer = 0, tPointer = 0;
+
+        while (sPointer < sLen && tPointer < tLen) {
+            if (s.charAt(sPointer) == t.charAt(tPointer)) {
+                sPointer++;
+            }
+            tPointer++;
+        }
+
+        return sPointer == sLen;
+    }
+    
+}
