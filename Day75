@@ -1,0 +1,100 @@
+
+//B. Even Array
+//https://codeforces.com/problemset/problem/1367/B
+import java.util.Scanner;
+ 
+public class EvenArray {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int t = scanner.nextInt(); 
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); 
+            int[] a = new int[n];
+            for (int j = 0; j < n; j++) {
+                a[j] = scanner.nextInt(); 
+            }
+            
+            int evenMismatch = 0; 
+            int oddMismatch = 0;   
+            
+            // Count mismatches
+            for (int j = 0; j < n; j++) {
+                if (j % 2 == 0 && a[j] % 2 != 0) {
+                    evenMismatch++; 
+                } else if (j % 2 != 0 && a[j] % 2 == 0) {
+                    oddMismatch++; 
+                }
+            }
+            
+           
+            if (evenMismatch != oddMismatch) {
+                System.out.println(-1);
+            } else {
+                System.out.println(evenMismatch); 
+            }
+        }
+        
+        scanner.close();
+    }
+}
+//
+//A. Panoramix's Prediction
+//https://codeforces.com/problemset/problem/80/A
+
+import java.util.Scanner;
+ 
+public class PanoramixPrediction {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // List of all prime numbers <= 50
+        int[] primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
+ 
+        
+        int n = scanner.nextInt(); 
+        int m = scanner.nextInt(); 
+        
+        // Find if m is the next prime after n
+        boolean isNextPrime = false;
+        for (int i = 0; i < primes.length - 1; i++) {
+            if (primes[i] == n && primes[i + 1] == m) {
+                isNextPrime = true;
+                break;
+            }
+        }
+ 
+   
+        System.out.println(isNextPrime ? "YES" : "NO");
+        
+        scanner.close();
+    }
+}
+//A. Boring Apartments
+//https://codeforces.com/problemset/problem/1433/A
+import java.util.Scanner;
+
+public class BoringApartments {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int t = scanner.nextInt(); // Number of test cases
+        for (int i = 0; i < t; i++) {
+            int x = scanner.nextInt(); // Apartment number that answered
+            int digit = x / 1111; // Extracting the digit (1-9)
+            int totalKeypresses = 0;
+
+            // Count keypresses for digits 1 to (digit - 1)
+            for (int d = 1; d < digit; d++) {
+                totalKeypresses += d * 4; // Each digit contributes d keypresses for 4 apartments (d, dd, ddd, dddd)
+            }
+
+            // Count keypresses for the current digit
+            totalKeypresses += digit * (x % 1111 + 1); // Count apartments from d, dd, ..., up to x
+
+            System.out.println(totalKeypresses);
+        }
+        
+        scanner.close();
+    }
+}
