@@ -1,1 +1,101 @@
+//Day76
 
+//A. Do Not Be Distracted!
+//
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class PolycarpTasks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); // Number of test cases
+        scanner.nextLine(); // Consume newline
+
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); // Number of days
+            String tasks = scanner.next(); // Task sequence
+            scanner.nextLine(); // Consume newline
+
+            if (isSuspicious(tasks)) {
+                System.out.println("NO");
+            } else {
+                System.out.println("YES");
+            }
+        }
+        scanner.close();
+    }
+
+    private static boolean isSuspicious(String tasks) {
+        HashSet<Character> completedTasks = new HashSet<>();
+        char lastTask = '\0'; // Initialize with null character
+
+        for (char task : tasks.toCharArray()) {
+            if (task != lastTask) {
+                if (completedTasks.contains(task)) {
+                    return true; // Found a suspicious task switch
+                }
+                completedTasks.add(task);
+                lastTask = task;
+            }
+        }
+        return false; // No suspicious behavior detected
+    }
+}
+
+//A. Maximum GCD
+//https://codeforces.com/problemset/problem/1370/A
+import java.util.Scanner;
+
+public class MaximumGCD {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); 
+        
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt();
+            // The maximum GCD is simply n / 2
+            System.out.println(n / 2);
+        }
+        
+        scanner.close();
+    }
+}
+
+//A. Plus One on the Subset
+//https://codeforces.com/problemset/problem/1624/A
+import java.util.Scanner;
+
+public class PlusOneOnTheSubset {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); 
+        
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt();
+            int[] a = new int[n];
+            
+          
+            for (int j = 0; j < n; j++) {
+                a[j] = scanner.nextInt();
+            }
+            
+            // Find maximum element in the array using a standard for loop
+            int max_a = a[0]; 
+            for (int j = 1; j < n; j++) {
+                if (a[j] > max_a) {
+                    max_a = a[j]; 
+                }
+            }
+            
+            // Calculate total operations needed to make all elements equal to max_a
+            long operations = 0;
+            for (int j = 0; j < n; j++) {
+                operations += (max_a - a[j]); // Sum of differences
+            }
+            
+            System.out.println(operations); 
+        }
+        
+        scanner.close();
+    }
+}
