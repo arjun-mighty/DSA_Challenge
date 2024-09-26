@@ -1,2 +1,177 @@
 //
+//A. Love Story
+// https://codeforces.com/problemset/problem/1829/A
+import java.util.Scanner;
+ 
+public class LoveStory {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the number of test cases
+        int t = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+ 
+        // Define the target string
+        String target = "codeforces";
+ 
+        // Process each test case
+        for (int i = 0; i < t; i++) {
+            String s = scanner.nextLine(); // Read the input string
+            
+            // Count differences
+            int differenceCount = countDifferences(s, target);
+            System.out.println(differenceCount); // Output the result for this test case
+        }
+        
+        scanner.close();
+    }
+ 
+    private static int countDifferences(String s, String target) {
+        int count = 0;
+        
+        // Compare each character in the strings
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != target.charAt(i)) {
 
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
+//A. Spell Check
+//https://codeforces.com/problemset/problem/1722/A
+import java.util.Scanner;
+ 
+public class SpellCheck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+      
+        int t = scanner.nextInt();
+        
+      
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); 
+            String s = scanner.next(); // Read the string
+            
+            
+            if (isValidSpelling(s, n)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        scanner.close();
+    }
+ 
+    private static boolean isValidSpelling(String s, int n) {
+       
+        if (n != 5) {
+            return false;
+        }
+ 
+      
+        int countT = 0, countI = 0, countM = 0, countU = 0, countR = 0;
+        
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case 'T': countT++; break;
+                case 'i': countI++; break;
+                case 'm': countM++; break;
+                case 'u': countU++; break;
+                case 'r': countR++; break;
+                default: return false; 
+            }
+        }
+ 
+      
+        return countT == 1 && countI == 1 && countM == 1 && countU == 1 && countR == 1;
+    }
+}
+//B. Fair Division
+//https://codeforces.com/problemset/problem/1472/B
+import java.util.Scanner;
+ 
+public class FairDivision {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int t = scanner.nextInt();
+        
+       
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); 
+            int[] candies = new int[n];
+            int count1 = 0, count2 = 0; 
+            
+           
+            for (int j = 0; j < n; j++) {
+                candies[j] = scanner.nextInt();
+                if (candies[j] == 1) {
+                    count1++;
+                } else {
+                    count2++;
+                }
+            }
+            
+      
+            int totalWeight = count1 + 2 * count2;
+            
+            
+            if (totalWeight % 2 != 0) {
+                System.out.println("NO");
+                continue;
+            }
+            
+         
+            int targetWeight = totalWeight / 2;
+            
+           
+            boolean canDivide = false;
+            
+           
+            for (int used2 = 0; used2 <= Math.min(count2, targetWeight / 2); used2++) {
+                int remainingWeight = targetWeight - used2 * 2;
+                if (remainingWeight <= count1) {
+                    canDivide = true;
+                    break;
+                }
+            }
+            
+            System.out.println(canDivide ? "YES" : "NO");
+        }
+        
+        scanner.close();
+    }
+}
+//45. Jump Game II
+//https://leetcode.com/problems/jump-game-ii/description/?envType=study-plan-v2&envId=top-interview-150
+class Solution {
+    public int jump(int[] nums) {
+           int n = nums.length;
+        if (n == 1) {
+            return 0;
+        }
+        
+        int jumps = 0;
+        int currentEnd = 0;
+        int currentFarthest = 0;
+        
+        for (int i = 0; i < n - 1; i++) {
+            currentFarthest = Math.max(currentFarthest, i + nums[i]);
+            
+            if (i == currentEnd) {
+                jumps++;
+                currentEnd = currentFarthest;
+            }
+        }
+        
+        return jumps;
+    }
+     
+
+}
