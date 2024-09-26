@@ -1,1 +1,101 @@
-//     77
+
+
+//A. Minimal Square
+//https://codeforces.com/problemset/problem/1360/A
+import java.util.Scanner;
+ 
+public class MinimalSquare {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+   
+        int t = scanner.nextInt();
+        
+        for (int i = 0; i < t; i++) {
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            
+           
+            int sideLength1 = Math.max(2 * a, b);
+            int sideLength2 = Math.max(2 * b, a);
+            int sideLength3 = Math.max(a + b, Math.max(a, b));
+            
+           
+            int minSideLength = Math.min(Math.min(sideLength1, sideLength2), sideLength3);
+            
+          
+            int area = minSideLength * minSideLength;
+            
+            
+            System.out.println(area);
+        }
+        
+        scanner.close(); 
+    }
+}
+
+
+//A. Creating Words
+//https://codeforces.com/problemset/problem/1985/A
+
+import java.util.Scanner;
+ 
+public class WordSwapper {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int t = scanner.nextInt();
+        scanner.nextLine(); 
+        
+        for (int i = 0; i < t; i++) {
+            
+            String line = scanner.nextLine();
+            String[] words = line.split(" ");
+            String a = words[0];
+            String b = words[1];
+            
+            // Swap the first characters
+            String newA = b.charAt(0) + a.substring(1);
+            String newB = a.charAt(0) + b.substring(1);
+            
+          
+            System.out.println(newA + " " + newB);
+        }
+        
+        scanner.close();
+    }
+}
+
+//228. Summary Ranges
+//class Solution {
+    public List<String> summaryRanges(int[] nums) {
+           List<String> ranges = new ArrayList<>();
+        
+        // Check if the input array is empty
+        if (nums.length == 0) {
+            return ranges;
+        }
+        
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            int start = nums[i];
+            
+            // Move to the end of the current range
+            while (i + 1 < n && nums[i + 1] == nums[i] + 1) {
+                i++;
+            }
+            int end = nums[i];
+            
+            // Format the range and add it to the list
+            if (start == end) {
+                ranges.add(String.valueOf(start));
+            } else {
+                ranges.add(start + "->" + end);
+            }
+        }
+        
+        return ranges;
+    
+    }
+}
