@@ -1,0 +1,32 @@
+//1283 A.Minutes before the air.
+//https://codeforces.com/problemset/problem/1283/A
+import java.util.Scanner;
+ 
+public class MinutesBeforeNewYear {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the number of test cases
+        int t = scanner.nextInt();
+        
+      
+        for (int i = 0; i < t; i++) {
+            int h = scanner.nextInt(); 
+            int m = scanner.nextInt(); 
+            
+            // Calculate current minutes since midnight
+            int currentMinutes = h * 60 + m;
+            
+            // Total minutes in a day
+            int totalMinutesInADay = 1440;
+            
+         
+            int remainingMinutes = totalMinutesInADay - currentMinutes;
+            
+           
+            System.out.println(remainingMinutes);
+        }
+        
+        scanner.close();
+    }
+}
