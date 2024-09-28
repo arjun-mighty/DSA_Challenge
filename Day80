@@ -14,4 +14,34 @@
     
 }
 
-//
+//A. Dislike of Threes
+
+//https://codeforces.com/problemset/problem/1560/A
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+ 
+public class DislikeOfThrees {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        List<Integer> likedNumbers = new ArrayList<>();
+        int number = 1;
+        
+        while (likedNumbers.size() < 1000) {
+            if (number % 3 != 0 && number % 10 != 3) {
+                likedNumbers.add(number);
+            }
+            number++;
+        }
+        
+        int t = scanner.nextInt(); 
+        for (int i = 0; i < t; i++) {
+            int k = scanner.nextInt(); 
+            System.out.println(likedNumbers.get(k - 1)); 
+        }
+        
+        scanner.close();
+    }
+}
