@@ -30,3 +30,65 @@ public class MinutesBeforeNewYear {
         scanner.close();
     }
 }
+//134. Gas Station
+//https://leetcode.com/problems/gas-station/description/
+class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+         int totalGas = 0;
+        int totalCost = 0;
+        int currentTank = 0;
+        int startIndex = 0;
+
+        for (int i = 0; i < gas.length; i++) {
+            totalGas += gas[i];
+            totalCost += cost[i];
+            currentTank += gas[i] - cost[i];
+
+            // If current tank is negative, reset the start index
+            if (currentTank < 0) {
+                startIndex = i + 1; // Move to the next station
+                currentTank = 0;     // Reset current tank
+            }
+        }
+
+        // If total gas is less than total cost, return -1
+        return (totalGas < totalCost) ? -1 : startIndex;
+    }  
+}
+//A. Mishka and Game
+//https://codeforces.com/problemset/problem/703/A
+ 
+import java.util.Scanner;
+ 
+public class MishkaGame {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int countM = 0; 
+        int countC = 0; 
+ 
+        for (int i = 0; i < n; i++) { 
+            int m = sc.nextInt(); 
+            int c = sc.nextInt(); 
+ 
+            if (m > c) {
+                countM++; 
+            } else if (c > m) {
+                countC++; 
+            }
+            
+        }
+ 
+      
+        if (countM > countC) {
+            System.out.println("Mishka");
+        } else if (countC > countM) {
+            System.out.println("Chris");
+        } else {
+            System.out.println("Friendship is magic!^^");
+        }
+ 
+        sc.close();
+    }
+}
+//
