@@ -1,1 +1,117 @@
+//Day81
+
+//A. Amusing Joke
+// https://codeforces.com/problemset/problem/141/A
+import java.util.Scanner;
+ 
+public class LetterRearrangement {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+ 
+        // Input guest name, host name, and pile of letters
+        String guestName = scanner.nextLine().trim();
+        String hostName = scanner.nextLine().trim();
+        String pile = scanner.nextLine().trim();
+ 
+        // Check if the letters can form the names
+        if (canFormNames(guestName, hostName, pile)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+ 
+        scanner.close();
+    }
+ 
+    private static boolean canFormNames(String guest, String host, String pile) {
+        // Create an array to count letter frequencies (26 letters for A-Z)
+        int[] letterCount = new int[26];
+ 
+        // Count letters in guest's name and host's name
+        for (char c : (guest + host).toCharArray()) {
+            letterCount[c - 'A']++;
+        }
+ 
+        // Subtract counts based on the pile of letters
+        for (char c : pile.toCharArray()) {
+            letterCount[c - 'A']--;
+        }
+ 
+        // Check if all counts are zero
+        for (int count : letterCount) {
+            if (count != 0) {
+                return false; // There is a mismatch
+            }
+        }
+ 
+        return true; // All counts matched
+    }
+}
+
+//A. Fox And Snake
+//https://codeforces.com/problemset/problem/510/A
+import java.util.Scanner;
+ 
+public class FoxAndSnake {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        
+        // Create a 2D array to represent the grid
+        char[][] grid = new char[n][m];
+        
+        // Fill in the grid according to the snake pattern
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                // Fill entire row with '#'
+                for (int j = 0; j < m; j++) {
+                    grid[i][j] = '#';
+                }
+            } else {
+                // Fill with '.' and add '#' at appropriate position
+                for (int j = 0; j < m; j++) {
+                    grid[i][j] = '.';
+                }
+                // If it's an odd row, determine if we need to place '#' on the right or left
+                if (i % 4 == 1) {
+                    grid[i][m - 1] = '#'; // Place '#' on the right
+                } else {
+                    grid[i][0] = '#'; // Place '#' on the left
+                }
+            }
+        }
+ 
+      
+        for (int i = 0; i < n; i++) {
+            System.out.println(grid[i]);
+        }
+
+//169. Majority Element(Leetcode)
+//https://leetcode.com/problems/majority-element/description/
+class Solution {
+    public int majorityElement(int[] nums) {
+         int candidate = nums[0];
+        int count = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (count == 0) {
+                candidate = nums[i];
+                count = 1;
+            } else if (nums[i] == candidate) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        
+        return candidate;
+    }
+}
+ 
+        scanner.close();
+    }
+}
 //
