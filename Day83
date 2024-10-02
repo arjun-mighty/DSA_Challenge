@@ -1,1 +1,55 @@
-//
+//A. Brain's Photos
+//import java.util.Scanner;
+ 
+public class BrainsPhotos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read dimensions of the matrix
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline after integers
+ 
+        boolean isColored = false;
+ 
+        // Read the pixel matrix
+        for (int i = 0; i < n; i++) {
+            String row = scanner.nextLine();
+            // Check each character in the row
+            for (int j = 0; j < m; j++) {
+                char pixel = row.charAt(j * 2); // Each pixel is separated by space, so get every second character
+                if (pixel == 'C' || pixel == 'M' || pixel == 'Y') {
+                    isColored = true; // Found a colored pixel
+                    break; // No need to check further
+                }
+            }
+            if (isColored) break; // Break out of the outer loop if colored pixel is found
+        }
+ 
+        // Output result based on the pixel check
+        if (isColored) {
+            System.out.println("#Color");
+        } else {
+            System.out.println("#Black&White");
+        }
+        
+        scanner.close();
+    }
+}
+
+//2: A. Stair, Peak, or Neither? 
+//https://codeforces.com/problemset/problem/1950/A
+
+
+
+//1539. Kth Missing Positive Number
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+        for(int i = 0;i<arr.length;i++){
+            if(arr[i]<=k){
+                k++;
+            }
+        }
+        return k;
+    }
+}
