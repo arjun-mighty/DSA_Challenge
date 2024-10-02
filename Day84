@@ -1,1 +1,95 @@
 //
+
+import java.util.Scanner;
+ 
+public class StairPeak {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();  // Read the number of test cases
+        
+        for (int i = 0; i < t; i++) {
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            int c = scanner.nextInt();
+ 
+            if (a < b && b < c) {
+                System.out.println("STAIR");
+            } else if (a < b && b > c) {
+                System.out.println("PEAK");
+            } else {
+                System.out.println("NONE");
+            }
+        }
+        
+        scanner.close();
+    }
+}
+
+//
+import java.util.Scanner;
+ 
+public class MaxProductAfterIncrement {
+ 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); // Number of test cases
+ 
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); // Number of digits
+            int[] digits = new int[n];
+ 
+            for (int j = 0; j < n; j++) {
+                digits[j] = scanner.nextInt(); // Read each digit
+            }
+ 
+            long maxProduct = 0;
+ 
+            for (int j = 0; j < n; j++) {
+                // Create a modified array with the j-th digit incremented
+                long product = 1;
+                for (int k = 0; k < n; k++) {
+                    if (k == j) {
+                        product *= (digits[k] + 1); // Increment this digit
+                    } else {
+                        product *= digits[k]; // Keep the digit unchanged
+                    }
+                }
+                // Update the maximum product found
+                maxProduct = Math.max(maxProduct, product);
+            }
+ 
+            System.out.println(maxProduct);
+        }
+ 
+        scanner.close();
+    }
+}
+//242. Valid Anagram
+https://leetcode.com/problems/valid-anagram/description/
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+         if (s.length() != t.length()) {
+            return false;
+        }
+
+        // Step 2: Create a frequency array for the characters
+        int[] charCount = new int[26];
+
+        // Step 3: Count characters in s and decrease counts for t
+        for (int i = 0; i < s.length(); i++) {
+            charCount[s.charAt(i) - 'a']++;  // Increment count for s
+            charCount[t.charAt(i) - 'a']--;  // Decrement count for t
+        }
+
+        // Step 4: Check if all counts are zero
+        for (int count : charCount) {
+            if (count != 0) {
+                return false;  // If any count is not zero, it's not an anagram
+            }
+        }
+
+        return true;  // All counts are zero, s and t are anagrams
+    }
+    
+}
