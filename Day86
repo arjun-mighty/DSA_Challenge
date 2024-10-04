@@ -1,0 +1,29 @@
+//
+import java.util.Scanner;
+ 
+public class PerfectNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int k = scanner.nextInt();
+ 
+        int count = 0;
+        int number = 19;
+ 
+        while (count < k) {
+            int sum = 0;
+            int temp = number;
+ 
+            while (temp > 0) {
+                sum += temp % 10;
+                temp /= 10;
+            }
+ 
+            if (sum == 10) {
+                count++;
+            }
+            number++;
+        }
+ 
+        System.out.println(number - 1);
+    }
+}
