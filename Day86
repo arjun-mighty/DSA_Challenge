@@ -27,3 +27,96 @@ public class PerfectNumber {
         System.out.println(number - 1);
     }
 }
+
+//875. Koko Eating Bananas
+//class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        int left = 1; // Minimum speed (k)
+        int right = 0; // Maximum speed (k), find max pile
+        for (int pile : piles) {
+            right = Math.max(right, pile); // Find max pile
+        }
+
+        while (left < right) {
+            int mid = left + (right - left) / 2; // Calculate mid speed
+            if (canEatAll(piles, mid, h)) {
+                right = mid; // Try a smaller speed
+            } else {
+                left = mid + 1; // Increase speed
+            }
+        }
+
+        return left; // Minimum speed found
+    }
+
+    private boolean canEatAll(int[] piles, int k, int h) {
+        int hours = 0;
+        for (int pile : piles) {
+            hours += (pile + k - 1) / k; // Calculate hours needed for this pile
+        }
+        return hours <= h; // Check if within allowed hours
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class Solution {
+//     public int minEatingSpeed(int[] piles, int h) {
+//          int low = 0;
+//         int high = arr.length - 1;
+
+//         while (low <= high) {
+//             int mid = low + (high - low) / 2; 
+
+           
+//             if (arr[mid] == x) {
+//                 return mid;
+//             }
+//             // If x is greater, ignore left half
+//             if (arr[mid] < x) {
+//                 low = mid + 1;
+//             }
+//             // If x is smaller, ignore right half
+//             else {
+//                 high = mid - 1;
+//             }
+//         }
+//         return -1; 
+//     }
+
+//     // Recursive method for binary search
+//     public static int binarySearchRecursive(int[] arr, int low, int high, int x) {
+//         if (high >= low) {
+//             int mid = low + (high - low) / 2; // Calculate mid index
+
+//             // Check if x is present at mid
+//             if (arr[mid] == x) {
+//                 return mid; // Element found
+//             }
+//             // If x is smaller than mid, search in left half
+//             if (arr[mid] > x) {
+//                 return binarySearchRecursive(arr, low, mid - 1, x);
+//             }
+//             // Else search in right half
+//             return binarySearchRecursive(arr, mid + 1, high, x);
+//         }
+//         return -1; // Element not present
+//     }
+// }
+
