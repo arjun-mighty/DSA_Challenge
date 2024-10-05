@@ -1,1 +1,28 @@
-//
+//A. Floor Number
+import java.util.Scanner;
+ 
+public class FloorNumber {
+ 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int t = scanner.nextInt(); // Number of test cases
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); // Apartment number
+            int x = scanner.nextInt(); // Apartments per floor (except first)
+            
+            int floorNumber;
+            if (n <= 2) {
+                // If apartment is on the first floor
+                floorNumber = 1;
+            } else {
+                // Calculate which floor Petya lives on
+                floorNumber = 1 + (n - 3) / x + 1; // Adding one for the first floor
+            }
+            
+            System.out.println(floorNumber);
+        }
+        
+        scanner.close();
+    }
+}
