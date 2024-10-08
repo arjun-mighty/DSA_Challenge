@@ -1,1 +1,52 @@
-//
+
+
+//A. Minimize!
+//https://codeforces.com/problemset/problem/2009/A
+import java.util.Scanner;
+ 
+public class Minimize {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read number of test cases
+        int t = scanner.nextInt();
+        
+        // Process each test case
+        for (int i = 0; i < t; i++) {
+            // Read values of a and b
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            
+            // Calculate and print the minimum value
+            System.out.println(b - a);
+        }
+        
+        scanner.close();
+    }
+}
+
+//GameWithIntegers
+import java.util.Scanner;
+
+public class GameWithIntegers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read number of test cases
+        int t = scanner.nextInt();
+        
+        // Process each test case
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt();
+            
+            // Determine the winner based on n % 3
+            if (n % 3 == 0) {
+                System.out.println("Second");
+            } else {
+                System.out.println("First");
+            }
+        }
+        
+        scanner.close();
+    }
+}
