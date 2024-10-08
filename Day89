@@ -1,1 +1,59 @@
-//
+//A. Collecting Coins
+//https://codeforces.com/problemset/problem/1294/A
+import java.util.Scanner;
+ 
+public class CoinDistribution {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the number of test cases
+        int t = scanner.nextInt();
+        
+        // Process each test case
+        for (int i = 0; i < t; i++) {
+            // Read the number of coins each sister has and the number of coins Polycarp has
+            long a = scanner.nextLong();
+            long b = scanner.nextLong();
+            long c = scanner.nextLong();
+            long n = scanner.nextLong();
+            
+            // Calculate total coins
+            long totalCoins = a + b + c + n;
+            
+            // Check if totalCoins is divisible by 3 and if we can reach or exceed max(a, b, c)
+            if (totalCoins % 3 == 0 && totalCoins / 3 >= Math.max(a, Math.max(b, c))) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        scanner.close();
+    }
+}
+
+//A. Game with Integers
+import java.util.Scanner;
+ 
+public class GameWithIntegers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int t = scanner.nextInt();
+        
+       
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt();
+            
+            // Determine the winner based on n % 3
+            if (n % 3 == 0) {
+                System.out.println("Second");
+            } else {
+                System.out.println("First");
+            }
+        }
+        
+        scanner.close();
+    }
+}
