@@ -14,4 +14,11 @@ class Solution {
     }
 }
 
-//
+//A. A+B?
+//t = int(input())
+ 
+for _ in range(t):
+    expression = input().strip()
+    a, b = expression.split('+')
+    result = int(a) + int(b)
+    print(result)
