@@ -1,1 +1,87 @@
+//A. Magical Sticks
+//https://codeforces.com/problemset/problem/1371/A
+import java.util.Scanner;
+ 
+public class MagicalSticks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); 
+        
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); 
+            
+            int maxSticks;
+            if (n % 2 == 0) {
+                maxSticks = n / 2; // Even case
+            } else {
+                maxSticks = (n / 2) + 1; // Odd case
+            }
+            
+            System.out.println(maxSticks);
+        }
+        
+    }
+}
+
+//B. Colourblindness
+//https://codeforces.com/problemset/problem/1722/B
+import java.util.Scanner;
+ 
+public class ColorBlindness {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+     
+        int t = scanner.nextInt();
+        scanner.nextLine(); 
+        
+        for (int i = 0; i < t; i++) {
+            
+            int n = scanner.nextInt();
+            scanner.nextLine(); 
+            
+          
+            String row1 = scanner.nextLine();
+            String row2 = scanner.nextLine();
+            
+            // Check if Vasya sees them as identical
+            if (areRowsIdentical(row1, row2)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        scanner.close();
+    }
+ 
+    private static boolean areRowsIdentical(String row1, String row2) {
+        // Replace G with B for Vasya's perspective
+        String modifiedRow1 = row1.replace('G', 'B');
+        String modifiedRow2 = row2.replace('G', 'B');
+        
+        return modifiedRow1.equals(modifiedRow2);
+    }
+}
+
+//921. Minimum Add to Make Parentheses Valid
+class Solution {
+    public int minAddToMakeValid(String s) {
+         int open =0, mismatch=0;
+    for(int i=0; i<s.length(); i++)
+    {
+     if(s.charAt(i)=='(')
+     open++;
+     else
+     {
+        if(open>0)
+        open--;
+        else
+        mismatch++;
+     }
+    } 
+     return open+mismatch;   
+    }
+    
+}
 
