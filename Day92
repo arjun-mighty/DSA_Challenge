@@ -1,0 +1,74 @@
+//414. Third Maximum Number
+//https://leetcode.com/problems/third-maximum-number/
+class Solution {
+    public int thirdMax(int[] nums) {
+        int n=nums.length;
+        Arrays.sort(nums);
+        int count=1;
+        for(int i=n-1;i>0;i--)
+        {
+            if(nums[i]!=nums[i-1])
+            {
+                count++;
+            }
+            if(count==3)
+            {
+                return nums[i-1];
+            }
+        }
+        return nums[n-1];
+    }
+}
+
+//B. Maximum Multiple Sum
+//https://codeforces.com/problemset/problem/1985/B
+import java.util.Scanner;
+ 
+public class MaximumMultipleSum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); 
+ 
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); 
+            int result = (n == 3) ? 3 : 2; 
+            System.out.println(result);
+        }
+ 
+        scanner.close();
+    }
+}
+
+//A. Night at the Museum
+import java.util.Scanner;
+ 
+public class NightAtTheMuseum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String exhibitName = scanner.nextLine(); 
+        System.out.println(minRotations(exhibitName)); 
+    }
+ 
+    public static int minRotations(String s) {
+        char currentChar = 'a'; 
+        int totalRotations = 0;
+ 
+        for (char targetChar : s.toCharArray()) {
+            // Calculate positions (0 for 'a', 1 for 'b', ..., 25 for 'z')
+            int currentPos = currentChar - 'a';
+            int targetPos = targetChar - 'a';
+ 
+           
+            int clockwiseRotations = (targetPos - currentPos + 26) % 26;
+            int counterclockwiseRotations = (currentPos - targetPos + 26) % 26;
+ 
+            
+            totalRotations += Math.min(clockwiseRotations, counterclockwiseRotations);
+ 
+           
+            currentChar = targetChar;
+        }
+ 
+        return totalRotations;
+    }
+}
