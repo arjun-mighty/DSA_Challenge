@@ -55,3 +55,61 @@ public class OrdinaryNumbers {
         scanner.close();
     }
 }
+
+
+//A. How Much Does Daytona Cost?
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+ 
+public class MostCommonSubsegment {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); 
+        
+        while (t-- > 0) {
+            int n = scanner.nextInt(); 
+            int k = scanner.nextInt();
+            
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = scanner.nextInt(); 
+            }
+            
+            if (isKMostCommon(a, n, k)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        scanner.close();
+    }
+    
+    private static boolean isKMostCommon(int[] a, int n, int k) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        
+        
+        for (int num : a) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+        
+        
+        int countK = countMap.getOrDefault(k, 0);
+        
+       
+        if (countK == 0) {
+            return false;
+        }
+        
+        // Check if k's count is greater than any other element's count
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            if (entry.getKey() != k && entry.getValue() >= countK) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
