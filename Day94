@@ -1,1 +1,57 @@
-//
+//383. Ransom Note
+//https://leetcode.com/problems/ransom-note/description/
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+             int[] charCount = new int[26];
+
+        // Count each character in the magazine
+        for (char c : magazine.toCharArray()) {
+            charCount[c - 'a']++;
+        }
+
+        // Check if we can construct the ransomNote
+        for (char c : ransomNote.toCharArray()) {
+            if (charCount[c - 'a'] == 0) {
+                return false; // Not enough characters in magazine
+            }
+            charCount[c - 'a']--; // Use one character from magazine
+        }
+
+        return true; // All characters in ransomNote can be constructed
+    }
+    
+}
+
+//B. Ordinary Numbers
+import java.util.*;
+ 
+public class OrdinaryNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); 
+ 
+        while (t-- > 0) {
+            long n = scanner.nextLong();
+            long count = 0;
+ 
+            // Count ordinary numbers with fewer digits than n
+            long digits = String.valueOf(n).length();
+            count += (digits - 1) * 9; // 9 ordinary numbers for each complete digit level before
+ 
+            // Check ordinary numbers with the same number of digits
+            for (int i = 1; i <= 9; i++) {
+                long ordinaryNumber = i;
+                for (int j = 1; j < digits; j++) {
+                    ordinaryNumber = ordinaryNumber * 10 + i; // Create ordinary numbers of the same digit
+                }
+                if (ordinaryNumber <= n) {
+                    count++; // Count this ordinary number if it's <= n
+                }
+            }
+ 
+            System.out.println(count);
+        }
+ 
+        scanner.close();
+    }
+}
