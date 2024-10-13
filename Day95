@@ -1,2 +1,80 @@
 //B. Gifts Fixing
 //https://codeforces.com/problemset/problem/1399/B
+import java.util.Scanner;
+ 
+public class GiftsFixing {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+ 
+        for (int testCase = 0; testCase < t; testCase++) {
+            int n = scanner.nextInt(); // Number of gifts
+            long[] a = new long[n]; // Array for candies
+            long[] b = new long[n]; // Array for oranges
+ 
+            // Read candies
+            for (int i = 0; i < n; i++) {
+                a[i] = scanner.nextLong();
+            }
+            // Read oranges
+            for (int i = 0; i < n; i++) {
+                b[i] = scanner.nextLong();
+            }
+ 
+            // Find minimum candies and oranges
+            long minCandies = Long.MAX_VALUE;
+            long minOranges = Long.MAX_VALUE;
+ 
+            for (int i = 0; i < n; i++) {
+                if (a[i] < minCandies) {
+                    minCandies = a[i];
+                }
+                if (b[i] < minOranges) {
+                    minOranges = b[i];
+                }
+            }
+ 
+            // Calculate total moves required to equalize gifts
+            long moves = 0;
+            for (int i = 0; i < n; i++) {
+                long extraCandies = a[i] - minCandies;
+                long extraOranges = b[i] - minOranges;
+ 
+                // Use as many combined operations as possible
+                long combinedMoves = Math.min(extraCandies, extraOranges);
+                moves += combinedMoves; // Count combined operations
+ 
+                // Remaining candies and oranges after combined operations
+                extraCandies -= combinedMoves;
+                extraOranges -= combinedMoves;
+ 
+                // Add remaining individual operations
+                moves += extraCandies + extraOranges;
+            }
+ 
+            System.out.println(moves);
+        }
+ 
+        scanner.close();
+    }
+}
+
+//172. Factorial Trailing Zeroes
+//https://leetcode.com/problems/factorial-trailing-zeroes/description/?envType=study-plan-v2&envId=top-interview-150
+class Solution {
+    public int trailingZeroes(int n) {
+
+        int zeroCount = 0;
+        int powerOfFive = 5;
+
+        // Count factors of 5
+        while (n >= powerOfFive) {
+            zeroCount += n / powerOfFive;
+            powerOfFive *= 5; // Move to the next power of 5
+        }
+
+        return zeroCount;
+    }
+
+        
+}
