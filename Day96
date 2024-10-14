@@ -18,3 +18,82 @@ public class FafaAndHisCompany {
         scanner.close();
     }
 }
+//B. Triple
+//https://codeforces.com/problemset/problem/1669/B
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int t = scanner.nextInt(); // Read number of test cases
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); // Read the size of the array
+            int[] a = new int[n];
+            
+            // Read the elements of the array
+            for (int j = 0; j < n; j++) {
+                a[j] = scanner.nextInt();
+            }
+            
+            System.out.println(findTriplet(a));
+        }
+        
+        scanner.close();
+    }
+
+    private static int findTriplet(int[] a) {
+        Map<Integer, Integer> frequency = new HashMap<>();
+        
+        // Count frequencies of each number
+        for (int num : a) {
+            frequency.put(num, frequency.getOrDefault(num, 0) + 1);
+        }
+        
+        // Check for any number that appears at least three times
+        for (Map.Entry<Integer, Integer> entry : frequency.entrySet()) {
+            if (entry.getValue() >= 3) {
+                return entry.getKey(); // Return the first number found
+            }
+        }
+        
+        return -1; // If no number appears at least three times
+    }
+}
+
+
+//345. Reverse Vowels of a String
+// https://leetcode.com/problems/reverse-vowels-of-a-string/?envType=study-plan-v2&envId=leetcode-75
+class Solution {
+    public String reverseVowels(String s) {
+        char[] word = s.toCharArray();
+        int start = 0;
+        int end = s.length() - 1;
+        String vowels = "aeiouAEIOU";
+        
+        while (start < end) {
+         
+            while (start < end && vowels.indexOf(word[start]) == -1) {
+                start++;
+            }
+            
+            
+            while (start < end && vowels.indexOf(word[end]) == -1) {
+                end--;
+            }
+            
+            char temp = word[start];
+            word[start] = word[end];
+            word[end] = temp;
+            
+           
+            start++;
+            end--;
+        }
+        
+        String answer = new String(word);
+        return answer;
+    }
+}
