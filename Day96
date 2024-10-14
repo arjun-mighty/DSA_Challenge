@@ -1,0 +1,20 @@
+// A. Fafa and his Company
+//import java.util.Scanner;
+ 
+public class FafaAndHisCompany {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt(); 
+        int count = 0;
+ 
+        // Loop through all possible values of l from 1 to n-1
+        for (int l = 1; l < n; l++) {
+            if ((n - l) % l == 0) {
+                count++;
+            }
+        }
+ 
+        System.out.println(count);
+        scanner.close();
+    }
+}
