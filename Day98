@@ -1,1 +1,63 @@
-//
+//A. Yogurt Sale
+//https://codeforces.com/problemset/problem/1955/A
+import java.util.Scanner;
+ 
+public class YogurtSale {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+      
+        int t = scanner.nextInt();
+        
+        for (int i = 0; i < t; i++) {
+            int n = scanner.nextInt(); 
+            int a = scanner.nextInt(); 
+            int b = scanner.nextInt(); 
+            
+            // Calculate cost if buying all individually
+            int costIndividual = n * a;
+            
+            // Calculate cost if buying in pairs
+            int pairs = n / 2;
+            int costPairs = pairs * b + (n % 2) * a;
+            
+           
+            int minCost = Math.min(costIndividual, costPairs);
+            
+            
+            System.out.println(minCost);
+        }
+        
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+//A. Perfect Permutation
+//https://codeforces.com/problemset/problem/233/A
+
+import java.util.Scanner;
+ 
+public class PerfectPermutation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int n = scanner.nextInt();
+        
+        
+        if (n % 2 != 0) {
+            System.out.println(-1); 
+        } else {
+           
+            for (int i = 1; i <= n; i += 2) {
+                System.out.print((i + 1) + " " + i + " "); 
+            }
+        }
+        
+        scanner.close();
+    }
+}
