@@ -70,3 +70,43 @@ class Solution {
         return num;
     }
 }
+
+//A. Cards for Friends
+//https://codeforces.com/problemset/problem/1472/A
+import java.util.Scanner;
+ 
+public class CardsForFriends {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int t = scanner.nextInt(); // number of test cases
+        for (int i = 0; i < t; i++) {
+            int w = scanner.nextInt(); // width of the sheet
+            int h = scanner.nextInt(); // height of the sheet
+            int n = scanner.nextInt(); // number of friends
+            
+            long pieces = 1; // start with one piece
+            
+            // Count how many times we can cut w
+            while (w % 2 == 0) {
+                w /= 2;
+                pieces *= 2; // each cut doubles the number of pieces
+            }
+            
+            // Count how many times we can cut h
+            while (h % 2 == 0) {
+                h /= 2;
+                pieces *= 2; // each cut doubles the number of pieces
+            }
+            
+            // Check if we can meet or exceed n pieces
+            if (pieces >= n) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        scanner.close();
+    }
+}
