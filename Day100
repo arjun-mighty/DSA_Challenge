@@ -1,0 +1,86 @@
+//Day100
+//A. Two Elevators
+//https://codeforces.com/problemset/problem/1729/A
+import java.util.Scanner;
+ 
+public class ElevatorChoice {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); // number of test cases
+        
+        for (int i = 0; i < t; i++) {
+            int a = scanner.nextInt(); // floor of first elevator
+            int b = scanner.nextInt(); // floor of second elevator
+            int c = scanner.nextInt(); // destination of second elevator
+            
+            // Calculate time for both elevators
+            int timeElevator1 = Math.abs(a - 1);
+            int timeElevator2 = Math.abs(b - c) + Math.abs(c - 1);
+            
+            // Determine which elevator to call
+            if (timeElevator1 < timeElevator2) {
+                System.out.println(1); // Call first elevator
+            } else if (timeElevator1 > timeElevator2) {
+                System.out.println(2); // Call second elevator
+            } else {
+                System.out.println(3); // Both arrive at the same time
+            }
+        }
+        
+        scanner.close();
+    }
+}
+
+//A. Only Pluses
+//https://codeforces.com/problemset/problem/1992/A
+import java.util.Scanner;
+ 
+public class OnlyPluses {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        
+        for (int i = 0; i < t; i++) {
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            int c = scanner.nextInt();
+            
+            int maxProduct = 0;
+            
+            // Try all combinations of distributing up to 5 increments
+            for (int x = 0; x <= 5; x++) {
+                for (int y = 0; y <= 5 - x; y++) {
+                    int z = 5 - x - y; // Remaining increments
+                    int product = (a + x) * (b + y) * (c + z);
+                    maxProduct = Math.max(maxProduct, product);
+                }
+            }
+            
+            System.out.println(maxProduct);
+        }
+        
+        scanner.close();
+    }
+}
+
+//49. Group Anagrams
+//https://leetcode.com/problems/group-anagrams/description/
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+        
+        for (String word : strs) {
+            char[] chars = word.toCharArray();
+            Arrays.sort(chars);
+            String sortedWord = new String(chars);
+            
+            if (!map.containsKey(sortedWord)) {
+                map.put(sortedWord, new ArrayList<>());
+            }
+            
+            map.get(sortedWord).add(word);
+        }
+        
+        return new ArrayList<>(map.values());
+    }
+}
